@@ -6,6 +6,11 @@ from fpdf import FPDF
 import base64
 import io
 from io import BytesIO
+import textwrap
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from reportlab.lib.units import cm
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 from sklearn.model_selection import train_test_split
@@ -108,27 +113,29 @@ with tab1:
 with tab2:
     st.header("Kalkulator Pendapatan (CalcY)")
     st.info("""
-    Kamu bisa menggunakan CalcY untuk menghitung komponen-komponen Pendapatan Nasional, seperti GDP, GNP, NNP, NNI, PI, dan DI.
+    Kamu bisa menggunakan CalcY untuk menghitung komponen-komponen Pendapatan Nasional: GDP, GNP, NNP, NNI, PI, dan DI.
     """)
+
     st.markdown("""
-    Sebuah negara memiliki data ekonomi sebagai berikut:
+    **Contoh data:**
     - GDP: Rp150.000
-    - Pendapatan Neto dari Luar Negeri: Rp50.000
+    - Pendapatan WNI di Luar Negeri: Rp50.000
+    - Pendapatan WNA di Dalam Negeri: Rp30.000
     - Penyusutan: Rp100.000
     - Pajak Tidak Langsung: Rp70.000
     - Subsidi: Rp20.000
     - Pajak Penghasilan: Rp100.000
     - Iuran Jaminan Sosial: Rp50.000
     - Laba Ditahan: Rp100.000
+    - Iuran Asuransi: Rp40.000
+    - Pajak Perseroan: Rp30.000
     - Transfer Payment: Rp200.000
-
-    Hitunglah GDP, GNP, NNP, NNI, PI, dan DI menggunakan CalcY!
     """)
 
     st.info("""
-    Petunjuk penggunaan CalcY:
-    - Masukkan angka tanpa tanda koma (,) atau titik (.). Contoh: memasukkan Rp150.000, menjadi 150000.
-    - Perhatikan baik-baik data yang akan diinputkan.
+    Petunjuk penggunaan:
+    - Masukkan angka tanpa tanda koma (,) atau titik (.)
+    - Pastikan data sesuai satuan yang digunakan.
     """)
 
     gdp2 = st.number_input("GDP", min_value=0, step=100)
@@ -136,7 +143,7 @@ with tab2:
     foreign_income = st.number_input("Pendapatan WNA di Dalam Negeri", min_value=0, step=100)
     depreciation = st.number_input("Depresiasi (Penyusutan)", min_value=0, step=100)
     subsidy = st.number_input("Subsidi", min_value=0, step=100)
-    direct_tax = st.number_input("Pajak Langsung", min_value=0, step=100)
+    direct_tax = st.number_input("Pajak Langsung (Personal Income Tax)", min_value=0, step=100)
     indirect_tax = st.number_input("Pajak Tidak Langsung", min_value=0, step=100)
     trans_pay = st.number_input("Transfer Payment", min_value=0, step=100)
     laba_ditahan = st.number_input("Laba Ditahan", min_value=0, step=100)
@@ -144,22 +151,31 @@ with tab2:
     personal_tax = st.number_input("Pajak Perseroan", min_value=0, step=100)
     jamsos = st.number_input("Iuran Jaminan Sosial", min_value=0, step=100)
 
-    gnp = gdp2 + income_from_abroad - foreign_income
-    nnp = gnp - depreciation
-    nni = nnp - indirect_tax + subsidy
-    pi = (nni + trans_pay) - (laba_ditahan + iuran_insurance + personal_tax + jamsos)
-    di = pi - direct_tax
+    if st.button("Hitung"):
+        gnp = gdp2 + income_from_abroad - foreign_income
+        nnp = gnp - depreciation
+        nni = nnp - indirect_tax + subsidy
+        pi = (nni + trans_pay) - (laba_ditahan + iuran_insurance + personal_tax + jamsos)
+        di = pi - direct_tax
 
-    st.subheader("Hasil Kalkulasi Komponen Pendapatan Nasional")
-
-    data = {
+        st.subheader("Hasil Perhitungan")
+        data = {
             "Komponen": ["GDP", "GNP", "NNP", "NNI", "PI", "DI"],
             "Nilai": [gdp2, gnp, nnp, nni, pi, di]
         }
-    df = pd.DataFrame(data)
-    df_reset = df.reset_index(drop=True)
-    st.dataframe(df_reset, use_container_width=True)
+        df = pd.DataFrame(data)
+        df["Nilai"] = df["Nilai"].apply(lambda x: f"Rp{x:,.0f}")
+        st.dataframe(df, use_container_width=True)
 
+        st.subheader("Langkah-langkah Perhitungan")
+        st.write(f"**1. GNP** = GDP + Pendapatan WNI di LN - Pendapatan WNA di DN = {gdp2} + {income_from_abroad} - {foreign_income} = {gnp}")
+        st.write(f"**2. NNP** = GNP - Depresiasi = {gnp} - {depreciation} = {nnp}")
+        st.write(f"**3. NNI** = NNP - Pajak Tidak Langsung + Subsidi = {nnp} - {indirect_tax} + {subsidy} = {nni}")
+        st.write(f"**4. PI** = (NNI + Transfer Payment) - (Laba Ditahan + Iuran Asuransi + Pajak Perseroan + Jaminan Sosial)")
+        st.write(f"         = ({nni} + {trans_pay}) - ({laba_ditahan} + {iuran_insurance} + {personal_tax} + {jamsos}) = {pi}")
+        st.write(f"**5. DI** = PI - Pajak Langsung = {pi} - {direct_tax} = {di}")
+
+        st.info("Alur perhitungan seluruh komponen pendapatan nasional harus urut, ya. Misalkan jika ingin mencari nilai NNI maka harus menghitung dulu GDP, GNP, dan NNP-nya.")
 
 # pendekatan produksi
 with tab3:
@@ -175,7 +191,8 @@ with tab3:
     - Masukkan angka tanpa tanda koma (,) atau titik (.). Contoh: memasukkan Rp150.000, menjadi 150000.
     - Perhatikan baik-baik data yang akan diinputkan.
     """)
-    
+
+
     agriculture_price = st.number_input("Harga Produk Sektor Pertanian (P)", min_value=0, step=100)
     agriculture_quantity = st.number_input("Jumlah Produk Sektor Pertanian (Q)", min_value=0, step=50)
 
@@ -191,13 +208,16 @@ with tab3:
     others_price = st.number_input("Harga Produk Sektor Lainnya (P)", min_value=0, step=100)
     others_quantity = st.number_input("Jumlah Produk Sektor Lainnya (Q)", min_value=0, step=50)
 
+
     agriculture_gdp = agriculture_price * agriculture_quantity
     industry_gdp = industry_price * industry_quantity
     services_gdp = services_price * services_quantity
     mining_gdp = mining_price * mining_quantity
     others_gdp = others_price * others_quantity
 
+
     total_y2 = agriculture_gdp + industry_gdp + services_gdp + mining_gdp + others_gdp
+
 
     st.subheader("Hasil Simulasi")
     st.write(f"**GDP (Produk Domestik Bruto): {total_y2}**")
@@ -209,38 +229,14 @@ with tab3:
     df = pd.DataFrame(data)
     st.write(df)
 
-    st.subheader("Penjelasan Perubahan")
-    if agriculture_quantity > 500:
-        st.markdown(f"🔵 **Produksi Pertanian meningkat**. Peningkatan produksi sektor pertanian ({agriculture_quantity}) akan meningkatkan kontribusi sektor ini terhadap GDP.")
-    else:
-        st.markdown(f"🔵 **Produksi Pertanian menurun**. Penurunan produksi sektor pertanian ({agriculture_quantity}) dapat menurunkan kontribusinya terhadap GDP.")
 
-    if industry_quantity > 400:
-        st.markdown(f"🟢 **Produksi Industri meningkat**. Peningkatan produksi sektor industri ({industry_quantity}) akan mendorong pertumbuhan ekonomi melalui tambahan output dan lapangan kerja.")
-    else:
-        st.markdown(f"🟢 **Produksi Industri menurun**. Penurunan produksi sektor industri ({industry_quantity}) dapat menghambat pertumbuhan ekonomi dan mengurangi kontribusi sektor industri terhadap GDP.")
-
-    if services_quantity > 600:
-        st.markdown(f"🟣 **Produksi Sektor Jasa meningkat**. Peningkatan sektor jasa ({services_quantity}) akan menambah kontribusi sektor ini terhadap GDP, terutama di ekonomi berbasis layanan.")
-    else:
-        st.markdown(f"🟣 **Produksi Sektor Jasa menurun**. Penurunan sektor jasa ({services_quantity}) dapat mengurangi kontribusi sektor ini dalam GDP.")
-
-    if mining_quantity > 300:
-        st.markdown(f"🟠 **Produksi Pertambangan meningkat**. Peningkatan produksi sektor pertambangan ({mining_quantity}) dapat menambah kontribusi sektor ini terhadap GDP, terutama di negara dengan sumber daya alam.")
-    else:
-        st.markdown(f"🟠 **Produksi Pertambangan menurun**. Penurunan produksi sektor pertambangan ({mining_quantity}) dapat mengurangi kontribusinya terhadap GDP.")
-
-    st.subheader("Visualisasi Diagram")
-    fig, ax = plt.subplots()
-    ax.bar(data["Sektor"][:-1], data["Nilai"][:-1], color=["green", "blue", "orange", "purple", "red"])
-    ax.set_title("Komponen Ekonomi dan Nilainya")
-    ax.set_ylabel("Nilai")
-    ax.set_xlabel("Sektor Ekonomi")
-    st.pyplot(fig)
-
-    st.markdown("""
-    Cobalah mengubah nilai pada kotak input untuk melihat bagaimana masing-masing komponen memengaruhi **GDP**, serta baca penjelasan di atas untuk memahami dampaknya.
-    """)
+    st.subheader("Langkah-langkah Perhitungan")
+    st.write(f"1. **Sektor Pertanian** = Harga × Jumlah = {agriculture_price} × {agriculture_quantity} = {agriculture_gdp}")
+    st.write(f"2. **Sektor Industri** = Harga × Jumlah = {industry_price} × {industry_quantity} = {industry_gdp}")
+    st.write(f"3. **Sektor Jasa** = Harga × Jumlah = {services_price} × {services_quantity} = {services_gdp}")
+    st.write(f"4. **Sektor Pertambangan** = Harga × Jumlah = {mining_price} × {mining_quantity} = {mining_gdp}")
+    st.write(f"5. **Sektor Lainnya** = Harga × Jumlah = {others_price} × {others_quantity} = {others_gdp}")
+    st.write(f"6. **Total GDP** = {agriculture_gdp} + {industry_gdp} + {services_gdp} + {mining_gdp} + {others_gdp} = {total_y2}")
 
 # pendekatan pendapatan
 with tab4:
@@ -257,12 +253,15 @@ with tab4:
     - Perhatikan baik-baik data yang akan diinputkan.
     """)
 
+
     rent = st.number_input("Pendapatan dari Sewa (r)", min_value=0, max_value=100000, value=0, step=100)
     wages = st.number_input("Pendapatan dari Upah (w)", min_value=0, max_value=100000, value=0, step=100)
     interest = st.number_input("Pendapatan dari Bunga (i)", min_value=0, max_value=100000, value=0, step=100)
     profit = st.number_input("Pendapatan dari Keuntungan (p)", min_value=0, max_value=100000, value=0, step=100)
 
+
     total_y3 = rent + wages + interest + profit
+
 
     st.subheader("Hasil Simulasi")
     st.write(f"**GDP (Produk Domestik Bruto): {total_y3}**")
@@ -274,38 +273,13 @@ with tab4:
     df_income = pd.DataFrame(data_income)
     st.write(df_income)
 
-    st.subheader("Penjelasan Perubahan")
-    if rent > 2000:
-        st.markdown(f"🔵 **Pendapatan dari Sewa meningkat**. Peningkatan pendapatan dari sewa ({rent}) menunjukkan adanya kenaikan harga properti atau peningkatan permintaan sewa.")
-    else:
-        st.markdown(f"🔵 **Pendapatan dari Sewa menurun**. Penurunan pendapatan dari sewa ({rent}) dapat mengindikasikan melemahnya pasar properti atau rendahnya permintaan sewa.")
 
-    if wages > 3000:
-        st.markdown(f"🟢 **Pendapatan dari Upah meningkat**. Peningkatan upah ({wages}) menunjukkan adanya kenaikan gaji pekerja, yang berpotensi meningkatkan daya beli masyarakat.")
-    else:
-        st.markdown(f"🟢 **Pendapatan dari Upah menurun**. Penurunan upah ({wages}) dapat mengindikasikan penurunan daya beli masyarakat dan berpotensi mengurangi konsumsi.")
-        
-    if interest > 1500:
-        st.markdown(f"🟣 **Pendapatan dari Bunga meningkat**. Peningkatan pendapatan dari bunga ({interest}) bisa disebabkan oleh suku bunga yang lebih tinggi, yang menguntungkan pemilik modal.")
-    else:
-        st.markdown(f"🟣 **Pendapatan dari Bunga menurun**. Penurunan pendapatan bunga ({interest}) dapat menunjukkan penurunan suku bunga atau berkurangnya investasi.")
-        
-    if profit > 2500:
-        st.markdown(f"🟠 **Pendapatan dari Keuntungan meningkat**. Peningkatan keuntungan ({profit}) bisa disebabkan oleh peningkatan efisiensi atau permintaan yang lebih tinggi terhadap barang/jasa.")
-    else:
-        st.markdown(f"🟠 **Pendapatan dari Keuntungan menurun**. Penurunan keuntungan ({profit}) dapat mengindikasikan penurunan permintaan atau efisiensi dalam sektor bisnis.")
-
-    st.subheader("Visualisasi Komponen Pendapatan Ekonomi")
-    fig, ax = plt.subplots()
-    ax.bar(data_income["Komponen"][:-1], data_income["Nilai"][:-1], color=["blue", "green", "purple", "red"])
-    ax.set_title("Komponen Pendapatan Ekonomi dan Nilainya")
-    ax.set_ylabel("Nilai")
-    ax.set_xlabel("Komponen Ekonomi")
-    st.pyplot(fig)
-
-    st.markdown("""
-    Cobalah mengubah nilai pada kotak input di atas untuk melihat bagaimana masing-masing komponen memengaruhi **GDP**, serta baca penjelasan di atas untuk memahami dampaknya.
-    """)
+    st.subheader("Langkah-langkah Perhitungan")
+    st.write(f"1. **Pendapatan Sewa (r)** = {rent}")
+    st.write(f"2. **Pendapatan Upah (w)** = {wages}")
+    st.write(f"3. **Pendapatan Bunga (i)** = {interest}")
+    st.write(f"4. **Pendapatan Keuntungan (p)** = {profit}")
+    st.write(f"5. **Total GDP** = {rent} + {wages} + {interest} + {profit} = {total_y3}")
 
 # pendekatan pengeluaran
 with tab5:
@@ -328,46 +302,28 @@ with tab5:
     exports = st.number_input("Ekspor (X)", min_value=0, max_value=10000, value=0, step=100)
     imports = st.number_input("Impor (M)", min_value=0, max_value=10000, value=0, step=100)
 
+
     total_y = consumption + investment + government_spending + (exports - imports)
 
     st.subheader("Hasil Simulasi")
     st.write(f"**GDP (Produk Domestik Bruto): {total_y}**")
 
     data = {
-        "Komponen": ["(C)", "(I)", "(G)", "(X)", "(M)", "Total Y"],
+        "Komponen": ["Konsumsi (C)", "Investasi (I)", "Pengeluaran Pemerintah (G)", "Ekspor (X)", "Impor (M)", "Total Y"],
         "Nilai": [consumption, investment, government_spending, exports, imports, total_y]
     }
     df = pd.DataFrame(data)
     st.write(df)
 
-    st.subheader("Penjelasan Perubahan")
-    if consumption > 5000:
-        st.markdown(f"🔵 **Konsumsi meningkat**. Peningkatan konsumsi ({consumption}) menunjukkan daya beli masyarakat yang lebih tinggi, berkontribusi positif terhadap GDP.")
-    elif consumption < 5000:
-        st.markdown(f"🔵 **Konsumsi menurun**. Penurunan konsumsi ({consumption}) dapat mengindikasikan lemahnya daya beli masyarakat, sehingga berdampak negatif pada GDP.")
+    st.subheader("Langkah-langkah Perhitungan")
+    st.write(f"1. **Konsumsi (C)** = {consumption}")
+    st.write(f"2. **Investasi (I)** = {investment}")
+    st.write(f"3. **Pengeluaran Pemerintah (G)** = {government_spending}")
+    st.write(f"4. **Ekspor (X)** = {exports}")
+    st.write(f"5. **Impor (M)** = {imports}")
+    st.write(f"6. Hitung **(X - M)** = {exports} - {imports} = {exports - imports}")
+    st.write(f"7. Hitung **GDP** = {consumption} + {investment} + {government_spending} + ({exports} - {imports}) = {total_y}")
 
-    if investment > 2000:
-        st.markdown(f"🟢 **Investasi meningkat**. Dengan investasi sebesar {investment}, akan ada lebih banyak modal untuk produksi, yang berpotensi meningkatkan GDP.")
-    elif investment < 2000:
-        st.markdown(f"🟢 **Investasi menurun**. Investasi yang lebih rendah ({investment}) dapat memperlambat pertumbuhan ekonomi karena kurangnya dana untuk ekspansi bisnis.")
-
-    if exports > imports:
-        st.markdown(f"🟣 **Surplus perdagangan**. Ekspor ({exports}) lebih besar dari impor ({imports}), sehingga menghasilkan surplus perdagangan yang memperkuat GDP.")
-    elif exports < imports:
-        st.markdown(f"🟣 **Defisit perdagangan**. Ekspor ({exports}) lebih kecil dari impor ({imports}), yang dapat menurunkan kontribusi perdagangan terhadap GDP.")
-
-    st.subheader("Visualisasi Diagram")
-    fig, ax = plt.subplots()
-    ax.bar(data["Komponen"][:-1], data["Nilai"][:-1], color=["blue", "green", "orange", "purple", "red"])
-    ax.set_title("Komponen Ekonomi dan Nilainya")
-    ax.set_ylabel("Nilai")
-    ax.set_xlabel("Komponen Ekonomi")
-    st.pyplot(fig)
-
-    st.markdown("""
-    Cobalah mengubah nilai pada kotak input di atas untuk melihat bagaimana masing-masing komponen memengaruhi **GDP**, serta baca penjelasan di atas untuk memahami dampaknya.
-    """)
-    
 # pendapatan perkapita
 with tab6:
     def pendapatan_perkapita():
@@ -408,19 +364,6 @@ with tab6:
 
     st.info("Ketika jumlah penduduk bertambah tetapi pendapatan nasional tetap, pendapatan per kapita menjadi lebih kecil. Ini menunjukkan bahwa pertumbuhan jumlah penduduk dapat mempengaruhi kesejahteraan rata-rata masyarakat jika tidak diimbangi dengan peningkatan pendapatan nasional.")
 
-    st.header("Latihan Soal")
-    st.markdown("""
-    **Soal:**  
-    Jika Pendapatan Nasional adalah **1.500.000** dan jumlah penduduk adalah **75**, hitunglah pendapatan perkapita.
-    """)
-
-    user_answer = st.number_input("Masukkan jawaban Anda:", min_value=0, step=1)
-    if st.button("Kirim Jawaban"):
-        correct_answer = 1500000 / 75
-        if user_answer == correct_answer:
-            st.success("Jawaban Anda benar! 🎉")
-        else:
-            st.error(f"Jawaban Anda salah. Jawaban yang benar adalah {correct_answer:.2f}.")
 
 # distribusi pendapatan
 with tab7:
@@ -682,7 +625,13 @@ with tab8:
         class_name = st.text_input("Kelas")
         for idx, q in enumerate(all_questions):
             st.subheader(f"Soal {idx + 1}")
-            user_answers[idx] = st.radio(q["question"], q["options"], key=f"q{idx}")
+
+            user_answers[idx] = st.radio(
+                q["question"], 
+                q["options"], 
+                index=None,
+                key=f"q{idx}"
+            )
         
         submitted = st.form_submit_button("Kirim Jawaban")
     
@@ -706,12 +655,10 @@ with tab8:
             else:
                 st.error(f"Jawaban Anda: {user_answers[idx]} ❌")
                 st.markdown(f"**Penjelasan**: {q['explanation']}")
-        
-        # Load dataset dan rekomendasi
+
         try:
             materi = pd.read_csv('Somat.csv', sep=';', on_bad_lines='skip')
             jawaban_siswa = pd.read_csv('Dataset.csv', sep=';', on_bad_lines='skip')
-            print(materi)
             
             dataset_gabungan = pd.merge(materi, jawaban_siswa, on='Atribut', how='left')
             dataset_gabungan['Gabungan'] = dataset_gabungan['Pertanyaan'] + " " + dataset_gabungan['Atribut']
@@ -722,12 +669,6 @@ with tab8:
             knn = NearestNeighbors(n_neighbors=3, metric='cosine')
             knn.fit(tfidf_matrix)
 
-            required_columns = ['Atribut', 'Gabungan']
-            missing_columns = [col for col in required_columns if col not in dataset_gabungan.columns]
-            if missing_columns:
-                st.error(f"Kolom berikut tidak ditemukan di dataset gabungan: {missing_columns}")
-
-
             def rekomendasi_materi(soal_salah):
                 index_salah = dataset_gabungan[
                     dataset_gabungan['Soal'].isin(soal_salah)
@@ -736,97 +677,88 @@ with tab8:
                     return []
                 distances, indices = knn.kneighbors(tfidf_matrix[index_salah])
                 rekomendasi = dataset_gabungan.iloc[indices.flatten()]['Atribut']
-                return rekomendasi.unique()
+                return rekomendasi.drop_duplicates().tolist()
 
             rekomendasi = rekomendasi_materi(soal_salah)
-            index_salah = dataset_gabungan[
-            dataset_gabungan['Soal'].isin(soal_salah)
-            ].index
-
-            if "Expected" in dataset_gabungan.columns:
-                ground_truth = dataset_gabungan[
-                    dataset_gabungan['Soal'].isin(soal_salah)
-                ]['Expected']
-
-                rekomendasi_benar = set(ground_truth) & set(rekomendasi)
-                akurasi_model = len(rekomendasi_benar) / len(ground_truth) * 100 if len(ground_truth) > 0 else 0
-
-                st.subheader("Akurasi Model Prediksi")
-                st.info(f"Akurasi Model: {akurasi_model:.2f}%")
-                if len(index_salah) > 0:
-                    distances, indices = knn.kneighbors(tfidf_matrix[index_salah])
-                else:
-                    st.warning("Tidak ada data untuk diproses oleh KNN.")
-
-            distances, indices = knn.kneighbors(tfidf_matrix[index_salah])
 
             st.info("Selamat ya, kamu sudah menyelesaikan latihan soal Pendapatan Nasional!")
-
-            st.subheader("Rekomendasi materi yang harus kamu pelajari lagi, nih!")
+            st.subheader("Rekomendasi materi yang harus kamu pelajari lagi:")
             if len(rekomendasi) > 0:
-                for materi in rekomendasi:
-                    st.write(f"- {materi}")
+                for materi_item in rekomendasi:
+                    st.write(f"- {materi_item}")
             else:
                 st.write("Tidak ada rekomendasi yang dapat diberikan.")
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat memuat data: {e}")
-
-        def generate_excel(name, class_name, user_answers, all_questions, score):
-            data = {
-                'Nama Lengkap': [],
-                'Kelas': [],
-                'Soal': [],
-                'Jawaban Pengguna': [],
-                'Jawaban Benar': [],
-                'Penjelasan': [],
-                'Status': [],
-                'Rekomendasi Materi': []
-            }
             
+        def generate_pdf(name, class_name, user_answers, all_questions, score):
+            buffer = io.BytesIO()
+            c = canvas.Canvas(buffer, pagesize=A4)
+            width, height = A4
+
+            c.setFillColor(colors.green)
+            c.rect(0, height - 3*cm, width, 3*cm, fill=True, stroke=False)
+            c.setFillColor(colors.white)
+            c.setFont("Helvetica-Bold", 16)
+            c.drawString(2*cm, height - 2*cm, "Hasil Latihan Soal - Pendapatan Nasional")
+
+            c.setFillColor(colors.black)
+            c.setFont("Helvetica", 12)
+            c.drawString(2*cm, height - 4*cm, f"Nama Lengkap : {name}")
+            c.drawString(2*cm, height - 5*cm, f"Kelas        : {class_name}")
+
+            y = height - 6*cm
+            max_char_per_line = 90
+
             for idx, q in enumerate(all_questions):
-                data['Nama Lengkap'].append(name)
-                data['Kelas'].append(class_name)
-                data['Soal'].append(f"Soal {idx + 1}: {q['question']}")
-                data['Jawaban Pengguna'].append(user_answers[idx])
-                data['Jawaban Benar'].append(q["answer"])
-                data['Penjelasan'].append(q["explanation"])
-                status = "Benar" if user_answers[idx] == q["answer"] else "Salah"
-                data['Status'].append(status)
-                data['Rekomendasi Materi'].append(rekomendasi)
 
-            data['Nama Lengkap'].append(name)
-            data['Kelas'].append(class_name)
-            data['Soal'].append("Skor Total")
-            data['Jawaban Pengguna'].append(score)
-            data['Jawaban Benar'].append(f"{score} dari {len(all_questions)}")
-            data['Penjelasan'].append("")
-            data['Status'].append("")
-            data['Rekomendasi Materi'].append(rekomendasi)
+                c.setFont("Helvetica-Bold", 11)
+                c.setFillColor(colors.black)
+                for line in textwrap.wrap(f"Soal {idx+1}: {q['question']}", width=max_char_per_line):
+                    c.drawString(2*cm, y, line)
+                    y -= 0.5*cm
 
-            df = pd.DataFrame(data)
+                c.setFont("Helvetica", 10)
+                c.setFillColor(colors.blue)
+                for line in textwrap.wrap(f"Jawaban Anda: {user_answers[idx]}", width=max_char_per_line):
+                    c.drawString(2.5*cm, y, line)
+                    y -= 0.5*cm
 
-            excel_buffer = io.BytesIO()
-            with pd.ExcelWriter(excel_buffer, engine='openpyxl') as writer:
-                df.to_excel(writer, index=False, sheet_name="Hasil Latihan")
-            excel_buffer.seek(0)
-            
-            return excel_buffer
+                c.setFont("Helvetica", 10)
+                if user_answers[idx] == q['answer']:
+                    c.setFillColor(colors.green)
+                else:
+                    c.setFillColor(colors.red)
+                for line in textwrap.wrap(f"Jawaban Benar: {q['answer']}", width=max_char_per_line):
+                    c.drawString(2.5*cm, y, line)
+                    y -= 0.5*cm
 
-        if submitted:
-            score = 0
-            for idx, q in enumerate(all_questions):
-                if user_answers[idx] == q["answer"]:
-                    score += 1
+                c.setFont("Helvetica", 10)
+                c.setFillColor(colors.darkgrey)
+                status_text = "✅ Benar" if user_answers[idx] == q['answer'] else "❌ Salah"
+                c.drawString(2.5*cm, y, f"Status: {status_text}")
+                y -= 1*cm
 
-            excel_output = generate_excel(name, class_name, user_answers, all_questions, score)
+                if y < 3*cm:
+                    c.showPage()
+                    y = height - 2*cm
 
-            st.download_button(
-                label="Download Hasil Latihan Soal",
-                data=excel_output,
-                file_name= f"Hasil Latihan {name}.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
+            c.setFont("Helvetica-Bold", 12)
+            c.setFillColor(colors.black)
+            c.drawString(2*cm, y, f"Skor Total: {score} dari {len(all_questions)}")
+
+            c.save()
+            buffer.seek(0)
+            return buffer
+
+        pdf_output = generate_pdf(name, class_name, user_answers, all_questions, score)
+        st.download_button(
+                label="📄 Download Hasil Latihan (PDF)",
+                data=pdf_output,
+                file_name=f"Hasil Latihan {name}.pdf",
+                mime="application/pdf"
+                )
 
 # fakta-fakta
 with tab9:
@@ -891,7 +823,7 @@ with tab9:
 
             
     Tahun 2016, terdapat dokumen rahasia yang bocor, bernama Panama Papers. Berdasarkan buku 'The Panama Papers: Breaking Story of How the Rich & Powerful Hide Their Money' yang ditulis oleh Bastian Obermayer dan Frederik Obermaier, bahwa Panama Papers ini
-    pertama kali disampaikan kepada jurnalis oleh seorang whistleblower anonim yang menggunakan nama samaran John Doe. Melalui saluran komunikasi terenkripsi, John Dose
+    pertama kali disampaikan kepada jurnalis oleh seorang whistleblower anonim yang menggunakan nama samaran John Doe. Melalui saluran komunikasi terenkripsi, John Doe
     menghubungi Bastian Obermayer (Penulis buku terseut yang adalah seorang jurnalis) dari Suddeutzche Zeitung, dan menawarkan akses ke sejumlah besar dokumen yang berasal dari firma
     hukum Mossac Fonseca. Dokumen-dokumen tersebut berisi rincian perusahaan offshore, pemiliknya, dan bagaimana kekayaan mereka disembunyikan dari otoritas pajak.
             
