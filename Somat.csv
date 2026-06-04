@@ -1,25 +1,25 @@
 ID;Pertanyaan;Atribut;Materi;Level_Kognitif
 C101;Total pendapatan yang diperoleh oleh seluruh pelaku ekonomi dalam suatu negara selama periode tertentu disebut...;Pendapatan Nasional;Pengertian Pendapatan Nasional;C1
-C102;Secara teori ekonomi produk nasional bersih atau NNP diperoleh dengan cara...;NNP;Net National Product (NNP);C1
-C103;Komponen penambah dalam mencari nilai Personal Income (PI) dari NNI adalah...;Personal Income;Personal Income (PI);C1
-C104;Pendapatan pribadi yang sudah bersih dari segala kewajiban hukum terhadap negara disebut...;Disposable Income;Disposable Income (DI);C1
+C102;Secara teori ekonomi produk nasional bersih atau NNP diperoleh dengan cara...;NNP;Konsep Net National Product (NNP);C1
+C103;Di bawah ini yang merupakan komponen penambah (bersifat plus) dalam mencari nilai Personal Income (PI) dari NNI adalah...;Personal Income;Konsep Personal Income (PI);C1
+C104;Pendapatan pribadi yang sudah bersih dari segala kewajiban hukum terhadap negara disebut...;Disposable Income;Konsep Disposable Income (DI);C1
 C105;Komponen huruf w dan p dalam rumus Y = r + w + i + p melambangkan...;Pendekatan Pendapatan;Komponen Pendekatan Pendapatan;C1
-C106;Ukuran rata-rata pendapatan yang diperoleh oleh setiap penduduk dalam satu tahun disebut...;Pendapatan Per Kapita;Pendapatan Per Kapita;C1
-C107;Alat saring yang digunakan untuk mengubah GDP nominal menjadi GDP riil dinamakan...;GDP Deflator;GDP Deflator;C1
+C106;Ukuran rata-rata pendapatan yang diperoleh oleh setiap penduduk dalam satu tahun disebut...;Pendapatan Per Kapita;Konsep Pendapatan Per Kapita;C1
 
-C201;Faktor yang bukan memengaruhi besarnya pendapatan nasional suatu negara adalah...;Pendapatan Nasional;Faktor Pendapatan Nasional;C2
-C202;Arti asas teritorial dalam konsep Gross Domestic Product (GDP) adalah...;GDP;Asas Teritorial GDP;C2
-C203;Berdasarkan asas nasionalitas dalam konsep Gross National Product (GNP)...;GNP;Asas Nasionalitas GNP;C2
-C204;Mengapa pajak tidak langsung dikurangkan dan subsidi ditambahkan pada NNI...;NNI;Net National Income (NNI);C2
+C201;Suatu negara mengalami peningkatan kualitas pendidikan dan keterampilan tenaga kerja. Dampak yang paling mungkin terjadi terhadap pendapatan nasional adalah ...;Pendapatan Nasional;Faktor Pendapatan Nasional;C2
+C202;Arti asas teritorial dalam konsep Gross Domestic Product (GDP) adalah...;GDP;Konsep Gross Domestic Product (GDP);C2
+C203;Berdasarkan asas nasionalitas dalam konsep Gross National Product (GNP)...;GNP;Konsep Gross National Product (GNP);C2
+C204;Mengapa pajak tidak langsung dikurangkan dan subsidi ditambahkan pada NNI...;NNI;Konsep Net National Income (NNI);C2
 C205;Aturan emas menentukan barang antara dan barang akhir adalah...;Barang Antara dan Barang Akhir;Konsep Barang Antara dan Barang Akhir;C2
-C206;Contoh aktivitas pembelian yang tergolong Barang Akhir (Final Goods) adalah...;Final Goods;Barang Akhir (Final Goods);C2
-C207;Mengapa nilai barang antara tidak boleh dimasukkan dalam perhitungan pendapatan nasional...;Double Counting;Double Counting;C2
-C208;Inti dasar pendekatan pengeluaran dalam penghitungan pendapatan nasional adalah...;Pendekatan Pengeluaran;Expenditure Approach;C2
+C206;Contoh aktivitas pembelian yang tergolong Barang Akhir (Final Goods) adalah...;Barang Akhir;Konsep Barang Akhir (Final Goods);C2
+C207;Mengapa nilai barang antara tidak boleh dimasukkan dalam perhitungan pendapatan nasional...;Barang Antara;Konsep Barang Antara;C2
+C208;Inti dasar pendekatan pengeluaran dalam penghitungan pendapatan nasional adalah...;Pendekatan Pengeluaran;Konsep Pendekatan Pengeluaran;C2
+C209;GDP Nominal suatu negara pada tahun tertentu tercatat lebih tinggi daripada GDP Riil. Untuk mengetahui pengaruh perubahan tingkat harga terhadap nilai produksi tersebut, pemerintah menggunakan GDP Deflator yang diperoleh dari ...;GDP Deflator;Konsep Perhitungan GDP Deflator;C2
 
-C301;Menghitung Personal Income (PI) berdasarkan data GDP hingga PI yang diberikan.;Pendapatan Nasional;Perhitungan GDP-GNP-NNP-NNI-PI;C3
-C302;Menghitung pendapatan nasional menggunakan pendekatan nilai tambah (value added).;Pendekatan Produksi;Value Added;C3
+C301;Menghitung Personal Income (PI) berdasarkan data GDP hingga PI yang diberikan.;Pendapatan Nasional;Perhitungan Komponen Pendapatan Nasional;C3
+C302;Menghitung pendapatan nasional menggunakan pendekatan nilai tambah (value added).;Pendekatan Produksi;Perhitungan Pendekatan Produksi;C3
 C303;Menghitung pendapatan nasional menggunakan pendekatan pendapatan.;Pendekatan Pendapatan;Perhitungan Pendekatan Pendapatan;C3
 
 C401;Menganalisis makna kurva Lorenz yang semakin menjauhi garis diagonal.;Kurva Lorenz;Analisis Distribusi Pendapatan;C4
 
-C501;Mengevaluasi tingkat ketimpangan berdasarkan nilai Koefisien Gini.;Koefisien Gini;Evaluasi Ketimpangan Pendapatan;C5
+C501;MBerdasarkan data tersebut, evaluasi yang paling tepat mengenai kondisi distribusi pendapatan ketiga negara adalah ...;Koefisien Gini;Evaluasi Ketimpangan Pendapatan;C5

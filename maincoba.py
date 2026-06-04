@@ -64,31 +64,31 @@ if st.session_state.active_tab == "tab0":
     col7, col8, col9 = st.columns(3)
 
     with col1:
-        if st.button("1. Teori Pendapatan Nasional"):
+        if st.button("Teori Pendapatan Nasional"):
             st.session_state.active_tab = "tab1"
     with col2:
-        if st.button("2. Pendekatan Produksi"):
+        if st.button("Pendekatan Produksi"):
             st.session_state.active_tab = "tab3"
     with col3:
-        if st.button("3. Pendekatan Pendapatan"):
+        if st.button("Pendekatan Pendapatan"):
             st.session_state.active_tab = "tab4"
     with col4:
-        if st.button("4. Pendekatan Pengeluaran"):
+        if st.button("Pendekatan Pengeluaran"):
             st.session_state.active_tab = "tab5"
     with col5:
-        if st.button("5. Pendapatan Perkapita"):
+        if st.button("Pendapatan Perkapita"):
             st.session_state.active_tab = "tab6"
     with col6:
-        if st.button("6. Distribusi Pendapatan"):
+        if st.button("Distribusi Pendapatan"):
             st.session_state.active_tab = "tab7"
     with col7:
-        if st.button("7. Latihan Soal"):
+        if st.button("Latihan Soal"):
             st.session_state.active_tab = "tab8"
     with col8:
-        if st.button("8. Fakta-Fakta Menarik"):
+        if st.button("Fakta-Fakta Menarik"):
             st.session_state.active_tab = "tab9"
     with col9:
-        if st.button("9. Daftar Referensi"):
+        if st.button("Daftar Referensi"):
             st.session_state.active_tab = "tab10"  
 
 # TEORI
@@ -99,7 +99,7 @@ elif st.session_state.active_tab == "tab1":
     Besarnya pendapatan nasional dipengaruhi oleh berbagai faktor, seperti ketersediaan faktor produksi, kualitas sumber daya manusia, teknologi,
     modal, stabilitas nasional, serta kebijakan yang diterapkan.
     Pendapatan nasional mencerminkan tingkat produksi barang dan jasa yang dihasilkan oleh suatu negara.""")
-
+    st.divider()
     st.subheader("Pendekatan Perhitungan Pendapatan Nasional")
     st.write("Perhitungan pendapatan nasional dapat menggunakan tiga macam pendekatan, yaitu:")
     st.markdown("""
@@ -113,18 +113,18 @@ elif st.session_state.active_tab == "tab1":
     """)
     st.info("Rumusnya:  Y = C + G + I + (X - M)")
     st.warning("Kita pelajari detail tiga macam pendekatan ini di menu belajar selanjutnya, ya!")
-    
+    st.divider()
     st.subheader("Manfaat Pendapatan Nasional")
     st.markdown("""
     - Memahami apakah struktur ekonomi suatu negara lebih dominan di sektor industri, agraris, atau jasa.
     - Membandingkan kemajuan ekonomi suatu negara dari waktu ke waktu serta antarnegara.
     - Memberikan pedoman kepada pemerintah untuk menyusun kebijakan pembangunan ekonomi nasional.
     - Menilai kinerja ekonomi suatu negara berdasarkan data pendapatan nasional.""")
-                
+    st.divider()            
     st.subheader("Konsep dan Urutan Komponen Pendapatan Nasional")
     st.write("1. Gross Domestic Product (GDP)")
     st.write("""GDP adalah total nilai pasar dari seluruh barang dan jasa jadi yang diproduksi di dalam batas wilayah geografis
-    suatu negara selama periode tertentu (biasanya satu tahun). Teori GDP menganut asas teritorial (wilayah).
+    suatu negara selama periode tertentu (biasanya satu tahun). Teori GDP menganut asas teritorial atau wilayah.
     Artinya, faktor produksi milik siapapun (WNI maupun warga WNA) yang beroperasi di dalam negeri tersebut, nilainya mutlak dihitung ke dalam GDP.
     Nilainya masih kotor (Gross)""")
     st.write("""Supaya memudahkan kita dalam memahami, bayangkan kita punya restoran. Semua uang yang masuk dari penjualan makanan di dalam gedung restoran kita itu adalah GDP.
@@ -176,10 +176,8 @@ elif st.session_state.active_tab == "tab1":
     Uang ini sudah 100% hak mutlak milik pekerja yang bebas dipakai untuk belanja kebutuhan masing-masing atau bisa dijadikan tabungan""")
     st.info("Rumusnya: DI = PI - Pajak Langsung")
     
-    st.write("=====================================================================================")
-    
-    st.info("Dari penjelasan tadi, konsep GDP hingga DI tadi saling terkait antara satu sama lain, ya. Sehingga, jika kita menemukan soal-soal menghitung PI misalnya, harus dihitung mulai dari GNP-NNP-NNI baru bisa mendapatkan nilai PI.")
-    
+    st.warning("Dari penjelasan tadi, konsep GDP hingga DI tadi saling terkait antara satu sama lain, ya. Sehingga, jika kita menemukan soal-soal menghitung PI misalnya, harus dihitung mulai dari GNP-NNP-NNI baru bisa mendapatkan nilai PI.")
+    st.divider()
     st.subheader("Yuk, coba kerjakan latihan soal ini!")
 
     st.write("""
@@ -209,10 +207,14 @@ elif st.session_state.active_tab == "tab1":
             "D. Rp470.000 miliar",
             "E. Rp485.000 miliar"
         ),
+        index=None,
         key="soal_pi"
     )
 
     if st.button("Periksa Jawaban", key="btn_pi"):
+
+        if jawaban_pi is None:
+            st.warning("Silakan pilih salah satu jawaban terlebih dahulu, ya!")
 
         if jawaban_pi == "B. Rp455.000 miliar":
 
@@ -262,6 +264,7 @@ elif st.session_state.active_tab == "tab1":
 
     = Rp455.000 miliar
     """)
+            st.warning("Masih semangat? Yuk, kita lanjut ke menu belajar selanjutnya!")
 
         else:
 
@@ -290,9 +293,7 @@ elif st.session_state.active_tab == "tab1":
     Kamu kemungkinan hanya menghitung GNP 
     dan belum melanjutkan ke tahap berikutnya.
     """)
-    
-    st.warning("Masih semangat? Yuk, kita lanjut ke menu belajar selanjutnya!")
-    
+
     if st.button("Kembali ke Menu Utama"):
         st.session_state.active_tab = "tab0"
 
@@ -301,8 +302,7 @@ elif st.session_state.active_tab == "tab3":
     st.header("Konsep Pendekatan Produksi")
     st.info("""
     Kamu bisa menggunakan menu ini untuk mempelajari lebih dalam tentang perhitungan Pendapatan Nasional
-    Pendekatan Produksi, ya. Selain itu, kamu bisa mencoba mensimulasikan komponen-komponen produksi
-    dapat mempengaruhi pendapatan nasional suatu negara. Selamat mencoba, ya!
+    Pendekatan Produksi. Selamat belajar, ya!
     """)
 
     st.write("""
@@ -333,6 +333,8 @@ elif st.session_state.active_tab == "tab3":
             Bagaimana, mudah dipahami bukan?
             """)
 
+    st.divider()
+
     st.header("Yuk, coba kita latihan sebentar di bawah ini!")
     st.write("Baca kasus berikut, lalu pilihlah barang yang disebut termasuk barang apa!")
     pertanyaan = {
@@ -349,6 +351,7 @@ elif st.session_state.active_tab == "tab3":
         pilihan = st.radio(
             soal,
             ["Barang Antara", "Barang Akhir"],
+                index=None,
                 key=soal
             )
 
@@ -393,7 +396,7 @@ elif st.session_state.active_tab == "tab3":
     Hanya menghitung Harga Barang Akhir (Final Goods), yaitu harga kemeja di toko saja sebesar Rp100.000.
     Menjumlahkan Semua Nilai Tambah di tiap tahap: Rp10.000 + Rp15.000 + Rp35.000 + Rp40.000 = Rp100.000.
     """)
-    
+    st.divider()
     st.header("Waktunya latihan lagi! Yuk, coba kita kerjakan soal berikut!")
 
     st.markdown("""
@@ -417,7 +420,8 @@ elif st.session_state.active_tab == "tab3":
             "C. Rp450 miliar",
             "D. Rp500 miliar",
             "E. Rp550 miliar"
-        )
+        ),
+        index=None,
     )
 
     if st.button("Cek Jawaban", key="nilai_tambah"):
@@ -448,8 +452,7 @@ elif st.session_state.active_tab == "tab4":
     st.header("Konsep Pendekatan Pendapatan")
     st.info("""
     Kamu bisa menggunakan menu ini untuk mempelajari lebih dalam tentang perhitungan Pendapatan Nasional
-    Pendekatan Pendapatan, ya. Selain itu, kamu bisa mencoba mensimulasikan komponen-komponen pendapatan
-    dapat mempengaruhi pendapatan nasional suatu negara. Selamat mencoba, ya!
+    Pendekatan Pendapatan, ya. Selamat belajar, ya!
     """)
 
     st.write("""
@@ -494,6 +497,7 @@ elif st.session_state.active_tab == "tab4":
 
     st.info("Jadi, Rumus menghitung pendekatan pendapatan yaitu Y = r + w + i + p")
 
+    st.divider()
     st.header("Yuk, kita latihan soal!")
     st.write("Kerjakan soal di bawah ini dengan teliti, ya!")
 
@@ -515,7 +519,7 @@ elif st.session_state.active_tab == "tab4":
     - Tunjangan Hari Raya (THR) Pegawai = Rp50.000
     """)
 
-    st.subheader("Berapakah Pendapatan Nasional negara tersebut?")
+    st.markdown("Berapakah Pendapatan Nasional negara tersebut?")
 
     jawaban_pn = st.radio(
         "Pilih jawaban yang benar:",
@@ -526,6 +530,7 @@ elif st.session_state.active_tab == "tab4":
             "D. Rp710.000 miliar",
             "E. Rp680.000 miliar"
         ),
+        index=None,
         key="soal_pendapatan"
     )
 
@@ -595,7 +600,7 @@ elif st.session_state.active_tab == "tab5":
     st.header("Konsep Pendekatan Pengeluaran")
     st.info("""
     Kamu bisa menggunakan menu ini untuk mempelajari lebih dalam tentang perhitungan Pendapatan Nasional
-    Pendekatan Pengeluaran, ya. Selamat belajar!
+    Pendekatan Pengeluaran. Selamat belajar, ya!
     """)
 
     st.write("""Sebelum kita memulai perhitungan, alangkah baiknya kita mengenal dahulu komponen-komponen apa saja yang masuk ke dalam perhitungan
@@ -610,7 +615,7 @@ elif st.session_state.active_tab == "tab5":
 
     st.write("So, Pengeluaran = Pendapatan. Hanya pindah tangan saja, dari pembeli ke penjual.")
     st.info("Ingat aturan emas: Pendekatan Pengeluaran melihat perekonomian dari sudut pandang konsumen/pembeli")
-    
+    st.divider()
     st.subheader("Yuk, kita pahami dulu semua komponennya!")
     st.write("1. Konsumsi (Consumption) = C")
     st.markdown("""Komponen konsumsi (C) menghitung seluruh pengeluaran yang dilakukan oleh individu atau rumah tangga konsumen untuk membeli barang dan jasa demi memenuhi kebutuhan sehari-hari.
@@ -655,7 +660,7 @@ elif st.session_state.active_tab == "tab5":
     Impor diberi tanda minus karena barang impor tersebut sudah telanjur ikut terhitung di komponen Konsumsi (C) atau Investasi (I) masyarakat sebelumnya. Jadi, tanda minus pada Impor (M) berfungsi sebagai faktor pengurang agar kita benar-benar hanya menghitung pengeluaran untuk barang yang diproduksi di dalam negeri saja. Menjelaskan logika pelurusan ini ke siswa SMA biasanya membutuhkan analogi yang kuat.
     """)
     st.write("Bagaimana, apakah sudah paham? Yuk scroll ke atas dan pahami kembali jika masih kesulitan.")
-    
+    st.divider()
     st.header("Yuk, kita latihan soal!")
     st.subheader("Kerjakan soal berikut dengan teliti, ya.")
 
@@ -682,6 +687,7 @@ elif st.session_state.active_tab == "tab5":
             "C. Rp740 triliun",
             "D. Rp700 triliun"
         ),
+        index=None,
         key="soal_pengeluaran"
     )
 
@@ -747,6 +753,7 @@ elif st.session_state.active_tab == "tab6":
     apakah masuk kategori Low, Lower-Middle, Upper-Middle, atau High Income.
     """)
 
+    st.divider()
     st.subheader("2. Rumus dan Komponen Penting")
     st.image('rumuspp1.jpg')
     st.write("""Rumus perhitungannya memang terlihat sederhana, namun kita sering bingung yang dimasukkan nilai PDB atau nilai PNB, ya?
@@ -754,7 +761,7 @@ elif st.session_state.active_tab == "tab6":
     Sedangkan, PNB/GNP adalah rata-rata pendapatan yang benar-benar dimiliki oleh Warga Negara tersebut (baik yang tinggal di dalam negeri maupun di luar negeri).
     Pada pendapatan perkapita yang kita hitung adalah tingkat kesejahteraan warga negara kita yang sebenarnya, sehinga perhitungan menggunakan PNB/GNP jauh lebih akurat daripada PDB/GDP.
     """)
-
+    st.divider()
     st.subheader("3. GDP Deflator dan Riil")
     st.write("""Sebelum melangkah lebih jauh, kita harus memahami apa itu GDP Deflator dan Riil.
     """)
@@ -799,7 +806,7 @@ elif st.session_state.active_tab == "tab6":
     - GDP Riil = Rp10.000.000
     Nilai GDP Riil negara Fufufafa sebesar Rp10.000.000
     """)
-
+    st.divider()
     st.subheader("4. Jenis Pendapatan Perkapita")
     st.write("Terdapat dua jenis pendapatan perkapita, antara lain:")
     st.write("1. Pendapatan Perkapita Atas Dasar Harga Berlaku (Nominal).")
@@ -843,7 +850,7 @@ elif st.session_state.active_tab == "tab6":
     st.write("b. Pendapatan perkapita riil")
     st.write("Pendapatan perkapita riil = Rp1.000.000/10 = Rp100.000/orang")
     st.warning("Psst, kalau masih ada kesulitan bisa dibaca dan dipahami kembali, ya.")
-
+    st.divier()
     st.write("Berikut ringkasan perbandingan pendapataan perkapita nominal dan riil:")
     st.image('ssppnppr.png')
     if st.button("Kembali ke Menu Utama"):
@@ -865,7 +872,7 @@ elif st.session_state.active_tab == "tab7":
     - Distribusi Ukuran (Size Distribution) yaitu langsung melihat berapa besar pendapatan yang diterima oleh perorangan atau rumah tangga, tanpa peduli dari mana sumber pendapatan itu (apakah dari gaji, warisan, atau sewa).
     - Distribusi Fungsional (Functional Distribution) yaitu melihat pembagian pendapatan berdasarkan faktor produksi yang disediakan (buruh mendapat upah, pemilik modal mendapat untung, pemilik tanah mendapat sewa).
     """)
-
+    st.divider()
     st.subheader("2. Pengertian Kurva Lorenz")
     st.write("Perhatikan gambar kurva lorenz berikut:")
     st.image('kurva_lorenz.png')
@@ -930,7 +937,7 @@ elif st.session_state.active_tab == "tab7":
                 st.error("Tolong masukkan angka yang valid.")
         else:
             st.error("Masukkan data pendapatan terlebih dahulu.")
-
+    st.divider()
     st.subheader("3. Pengertian Koefisien Gini")
     st.write("""Koefisien Gini adalah indikator numerik yang mengukur derajat ketimpangan distribusi pendapatan secara keseluruhan.
     Nilainya diturunkan langsung dari Kurva Lorenz.
@@ -957,8 +964,8 @@ elif st.session_state.active_tab == "tab7":
     """)
 
     st.warning("Semakin dekat ke 1 artinya ketimpangan semakin parah, dan semakin dekat ke 0 artinya semakin merata sempurna. Jangan sampai terbalik, ya")
-
-    st.header("4. Kriteria Bank Dunia")
+    st.divider()
+    st.subheader("4. Kriteria Bank Dunia")
     st.write("Selain Rasio Gini, Bank Dunia membuat klasifikasi alternatif yang lebih praktis untuk mengukur ketimpangan dengan cara membagi populasi penduduk menjadi 3 kelompok berdasarkan tingkat kesejahteraannya")
     st.markdown("""
     - Suatu negara yang kelompok 40% penduduk termiskinnya memperoleh pendapatan lebih kecil dari 12%,
@@ -976,7 +983,6 @@ elif st.session_state.active_tab == "tab7":
 
     """)
 
-    
     if st.button("Kembali ke Menu Utama"):
         st.session_state.active_tab = "tab0"
 
@@ -990,7 +996,7 @@ elif st.session_state.active_tab == "tab8":
             "options": [
                 "A. Pendapatan per kapita",
                 "B. Pendapatan nasional",
-                "C. Produk regional bruto",
+                "C. Produk domestik bruto",
                 "D. Distribusi pendapatan",
                 "E. Laba ditahan"
 
@@ -1005,12 +1011,12 @@ elif st.session_state.active_tab == "tab8":
             "options":[
                 "A. GDP + Pendapatan Neto Luar Negeri",
                 "B. GNP dikurangi Pajak Tidak Langsung",
-                "C. GNP dikurangi Penyusutan (Depresiasi) barang modal",
+                "C. GNP dikurangi Penyusutan barang modal",
                 "D. NNI ditambah Subsidi pemerintah",
                 "E. PI dikurangi Pajak Langsung"
 
             ],
-            "answer": "C. GNP dikurangi Penyusutan (Depresiasi) barang modal",
+            "answer": "C. GNP dikurangi Penyusutan barang modal",
             "explanation": "Net National Product (NNP) atau Produk Nasional Neto adalah nilai produk nasional bersih. Karena selama proses produksi barang-barang modal (seperti mesin, alat, gedung) pasti mengalami aus atau penurunan nilai ekonomi, maka nilai GNP harus dibersihkan dengan cara dikurangi dengan penyusutan."
         },
         {
@@ -1067,40 +1073,24 @@ elif st.session_state.active_tab == "tab8":
         ],
         "answer": "B. Pendapatan Perkapita",
         "explanation": "Pendapatan per kapita diperoleh dari pembagian pendapatan nasional dengan jumlah penduduk."
-    },
-
-    {
-        "id": "C107",
-        "question": "Alat saring yang digunakan pemerintah untuk membersihkan data GDP kotor (Nominal) yang masih terkena efek inflasi menjadi data bersih (Riil) dinamakan...",
-        "options": [
-            "A. Kurva Lorenz",
-            "B. Rasio Gini",
-            "C. GDP Deflator",
-            "D. Kriteria Bank Dunia",
-            "E. Pendapatan Neto Luar Negeri"
-        ],
-        "answer": "C. GDP Deflator",
-        "explanation": "GDP Deflator digunakan untuk mengubah GDP nominal menjadi GDP riil dengan menghilangkan pengaruh inflasi."
     }
     ],
 
     "C2": [
         {
             "id": "C201",
-            "question": "Di bawah ini yang bukan merupakan faktor yang memengaruhi besarnya pendapatan nasional suatu negara adalah... ",
+            "question": "Suatu negara mengalami peningkatan kualitas pendidikan dan keterampilan tenaga kerja. Dampak yang paling mungkin terjadi terhadap pendapatan nasional adalah ... ",
             "options": [
-                "A. Ketersediaan faktor produksi",
-                "B. Kualitas sumber daya manusia",
-                "C. Kebijakan yang diterapkan",
-                "D. Stabilitas nasional",
-                "E. Jumlah penduduk yang mempunyai kendaraan mewah",
-
+                "A. Pendapatan nasional menurun karena biaya pendidikan meningkat",
+                "B. Pendapatan nasional tetap karena pendidikan tidak berhubungan dengan produksi",
+                "C. Pendapatan nasional meningkat karena produktivitas tenaga kerja bertambah",
+                "D. Pendapatan nasional menurun karena jumlah penduduk berkurang",
+                "E. Pendapatan nasional hanya memengaruhi sektor jasa"
             ],
-            "answer": "E. Jumlah penduduk yang mempunyai kendaraan mewah",
-            "explanation": "Jumlah penduduk yang mempunyai kendaraan mewah tidak mencerminkan produktivitas nasional secara agregat, melainkan hanya pola konsumsi atau distribusi kekayaan individu tertentu. Selain itu, hanya akan memengaruhi pendapatan perkapita."
+            "answer": "C. Pendapatan nasional meningkat karena produktivitas tenaga kerja bertambah",
+            "explanation": "Kualitas sumber daya manusia yang lebih baik akan meningkatkan produktivitas tenaga kerja sehingga jumlah barang dan jasa yang dihasilkan bertambah. Akibatnya, pendapatan nasional cenderung meningkat."
 
         },
-
         {
             "id": "C202",
             "question": "Konsep Gross Domestic Product (GDP) menganut asas teritorial (wilayah). Arti dari asas teritorial tersebut adalah... ",
@@ -1112,7 +1102,7 @@ elif st.session_state.active_tab == "tab8":
                 "E. Menghapus semua pajak dari wilayah domestik",
 
             ],
-            "answer": "B. Faktor produksi milik siapapun (WNI maupun WNA) yang beroperasi di dalam negeri, nilainya mutlak dihitung.",
+            "answer": "B. Faktor produksi milik siapapun (WNI maupun WNA) yang beroperasi di dalam negeri, nilainya mutlak dihitung",
             "explanation":"Gross Domestic Product (GDP) atau Produk Domestik Bruto (PDB) menitikberatkan pada aspek domestik/wilayah/teritorial. Artinya, semua aktivitas produksi yang menghasilkan barang dan jasa di dalam batas wilayah geografi suatu negara baik dilakukan oleh warga negara asli (WNI) maupun warga negara asing (WNA) akan dihitung ke dalam GDP negara tersebut."
 
         },
@@ -1127,7 +1117,7 @@ elif st.session_state.active_tab == "tab8":
                 "E. GDP dibagi dengan jumlah penduduk"
 
             ],
-            "answer": "B. GDP disesuaikan dengan Pendapatan Neto terhadap Luar Negeri.",
+            "answer": "B. GDP disesuaikan dengan Pendapatan Neto terhadap Luar Negeri",
             "explanation": "Gross National Product (GNP) atau Produk Nasional Bruto (PNB) menitikberatkan pada aspek nasionalitas/kewarganegaraan."
         },
         {
@@ -1141,22 +1131,36 @@ elif st.session_state.active_tab == "tab8":
                 "E. Karena subsidi merupakan bentuk tabungan jangka panjang masyarakat",
 
             ],
-            "answer": "B. Pajak tidak langsung adalah titipan pemerintah yang menempel pada produk (bukan omset murni), sedangkan subsidi meringankan modal riil hasil usaha.",
-            "explanation":".."
+            "answer": "B. Pajak tidak langsung adalah titipan pemerintah yang menempel pada produk (bukan omset murni), sedangkan subsidi meringankan modal riil hasil usaha",
+            "explanation":"Pengurangan pajak tidak langsung dan penambahan subsidi dilakukan agar nilai NNI mencerminkan pendapatan bersih yang benar-benar diterima oleh pemilik faktor produksi dalam suatu perekonomian."
         },
         {
             "id": "C205",
-            "question": "Apa aturan emas yang paling tepat untuk menentukan apakah suatu barang berstatus sebagai Barang Antara atau Barang Akhir?",
+            "question": """
+            Perhatikan beberapa kegiatan ekonomi berikut!
+            1.	Sebuah pabrik sepatu membeli kulit untuk diolah menjadi sepatu. 
+            2.	Seorang siswa membeli sepatu untuk digunakan ke sekolah. 
+            3.	Sebuah toko roti membeli tepung untuk membuat roti. 
+            4.	Seorang ibu membeli roti untuk dikonsumsi keluarganya. 
+            Berdasarkan konsep barang antara dan barang akhir, pasangan yang termasuk barang akhir adalah ...
+
+            """,
             "options": [
-                "A. Dilihat dari bentuk fisik barangnya yang kasar atau halus",
-                "B. Ditentukan dari siapa yang membelinya dan untuk apa barang itu digunakan, bukan bentuk fisiknya",
-                "C. Semua barang yang belum dimasak otomatis menjadi barang antara",
-                "D. Dilihat dari mahal atau murahnya harga barang di pasar",
-                "E. Ditentukan langsung oleh keputusan sepihak dari pabrik"
+                "A. (1) dan (3)",
+                "B. (1) dan (2)",
+                "C. (2) dan (4)",
+                "D. (2) dan (3)",
+                "E. (3) dan (4)"
 
             ],
-            "answer": "B. Ditentukan dari siapa yang membelinya dan untuk apa barang itu digunakan, bukan bentuk fisiknya.",
-            "explanation": "Tepung terigu bisa menjadi Barang Antara jika dibeli oleh pabrik roti untuk diproses kembali menjadi produk lain. Namun, tepung terigu bisa langsung menjadi Barang Akhir jika dibeli oleh konsumen akhir (ibu rumah tangga) untuk langsung digunakan di dapur sendiri. Jadi, tujuan penggunaan akhir adalah penentu utamanya."
+            "answer": "C. (2) dan (4)",
+            "explanation": """
+            Barang akhir (final goods) adalah barang yang dibeli untuk langsung digunakan atau dikonsumsi oleh konsumen akhir dan tidak diproses kembali untuk dijual.
+            •	Kulit yang dibeli pabrik sepatu termasuk barang antara, karena akan diolah kembali.
+            •	Sepatu yang dibeli siswa termasuk barang akhir, karena digunakan langsung oleh konsumen.
+            •	Tepung yang dibeli toko roti termasuk barang antara, karena digunakan sebagai bahan produksi.
+            •	Roti yang dibeli ibu rumah tangga termasuk barang akhir, karena langsung dikonsumsi.
+            """
         },
         {
             "id":"C206",
@@ -1173,32 +1177,45 @@ elif st.session_state.active_tab == "tab8":
             "explanation": "Telur yang dibeli oleh ibu rumah tangga langsung dikonsumsi habis oleh konsumen akhir dan tidak dijual atau diolah lagi demi keuntungan ekonomis berantai."
         },
         {
-        "id": "C207",
-        "question": "Mengapa nilai barang antara (intermediate goods) TIDAK boleh dimasukkan dalam perhitungan Pendapatan Nasional?",
-        "options": [
-            "A. Karena barang antara tidak memiliki harga jual di pasar",
-            "B. Untuk menghindari kesalahan fatal berupa penghitungan ganda (double counting)",
-            "C. Karena barang antara hanya diproduksi oleh pemerintah saja",
-            "D. Untuk mempercepat proses pencatatan nota oleh akuntan negara",
-            "E. Karena nilainya selalu berubah-ubah setiap hari"
-        ],
-        "answer": "B. Untuk menghindari kesalahan fatal berupa penghitungan ganda (double counting)",
-        "explanation": "Nilai barang antara sudah terkandung dalam nilai barang akhir sehingga tidak boleh dihitung dua kali."
-    },
+            "id": "C207",
+            "question": "Mengapa nilai barang antara (intermediate goods) TIDAK boleh dimasukkan dalam perhitungan Pendapatan Nasional?",
+            "options": [
+                "A. Karena barang antara tidak memiliki harga jual di pasar",
+                "B. Untuk menghindari kesalahan fatal berupa penghitungan ganda (double counting)",
+                "C. Karena barang antara hanya diproduksi oleh pemerintah saja",
+                "D. Untuk mempercepat proses pencatatan nota oleh akuntan negara",
+                "E. Karena nilainya selalu berubah-ubah setiap hari"
+            ],
+            "answer": "B. Untuk menghindari kesalahan fatal berupa penghitungan ganda (double counting)",
+            "explanation": "Nilai barang antara sudah terkandung dalam nilai barang akhir sehingga tidak boleh dihitung dua kali."
+        },
 
-    {
-        "id": "C208",
-        "question": "Inti dasar dari penghitungan pendapatan nasional menggunakan metode Pendekatan Pengeluaran (Expenditure Approach) adalah...",
-        "options": [
-            "A. Menjumlahkan nilai tambah dari semua sektor produksi berantai",
-            "B. Menghitung total nilai belanja atau pengeluaran yang dilakukan oleh seluruh pelaku ekonomi dalam satu tahun",
-            "C. Mengumpulkan data modal pinjaman dari luar negeri saja",
-            "D. Menghitung balas jasa berupa upah dan sewa yang diterima RTK",
-            "E. Menghitung sisa hasil usaha bersih milik dinas perpajakan"
-        ],
-        "answer": "B. Menghitung total nilai belanja atau pengeluaran yang dilakukan oleh seluruh pelaku ekonomi dalam satu tahun",
-        "explanation": "Pendekatan pengeluaran menghitung seluruh pengeluaran dari rumah tangga, perusahaan, pemerintah, dan sektor luar negeri."
-    }
+        {
+            "id": "C208",
+            "question": "Inti dasar dari penghitungan pendapatan nasional menggunakan metode Pendekatan Pengeluaran (Expenditure Approach) adalah...",
+            "options": [
+                "A. Menjumlahkan nilai tambah dari semua sektor produksi berantai",
+                "B. Menghitung total nilai belanja atau pengeluaran yang dilakukan oleh seluruh pelaku ekonomi dalam satu tahun",
+                "C. Mengumpulkan data modal pinjaman dari luar negeri saja",
+                "D. Menghitung balas jasa berupa upah dan sewa yang diterima RTK",
+                "E. Menghitung sisa hasil usaha bersih milik dinas perpajakan"
+            ],
+            "answer": "B. Menghitung total nilai belanja atau pengeluaran yang dilakukan oleh seluruh pelaku ekonomi dalam satu tahun",
+            "explanation": "Pendekatan pengeluaran menghitung seluruh pengeluaran dari rumah tangga, perusahaan, pemerintah, dan sektor luar negeri."
+        },
+        {
+            "id": "C209",
+            "question":"GDP Nominal suatu negara pada tahun tertentu tercatat lebih tinggi daripada GDP Riil. Untuk mengetahui pengaruh perubahan tingkat harga terhadap nilai produksi tersebut, pemerintah menggunakan GDP Deflator yang diperoleh dari ...",
+            "opstions": [
+                "A. Perbandingan GDP Riil dengan jumlah penduduk",
+                "B. Selisih antara GDP Nominal dan GDP Riil",
+                "C. Perbandingan GDP Nominal terhadap GDP Riil yang dikalikan 100",
+                "D. Penjumlahan GDP Nominal dan GDP Riil",
+                "E. Perbandingan GDP Riil terhadap GDP Nominal yang dikalikan 100"
+            ],
+            "answer":"C. Perbandingan GDP Nominal terhadap GDP Riil yang dikalikan 100",
+            "explanation":"GDP Deflator digunakan untuk mengukur perubahan tingkat harga dalam perekonomian. Nilainya diperoleh dengan membandingkan GDP Nominal terhadap GDP Riil kemudian dikalikan 100."
+        }
         
     ],
 
@@ -1292,16 +1309,22 @@ elif st.session_state.active_tab == "tab8":
     "C5": [
         {
         "id": "C501",
-        "question": "Sebuah negara setelah dihitung memiliki nilai Koefisien Gini sebesar 0,65. Berdasarkan kriteria standar indeks Koefisien Gini, kondisi negara tersebut berada pada tingkat...",
+        "question": """Perhatikan data koefisien gini berikut!
+        - Asgard = 0,28
+        - Midgard = 0,47
+        - Vanaheim = 0,66
+        Berdasarkan data tersebut, evaluasi yang paling tepat mengenai kondisi distribusi pendapatan ketiga negara adalah ...
+        """,
         "options": [
-            "A. Distribusi merata sempurna",
-            "B. Ketimpangan rendah",
-            "C. Ketimpangan sedang",
-            "D. Ketimpangan tinggi",
-            "E. Distribusi tidak merata sempurna"
+            "A. Negara Asgard memiliki tingkat ketimpangan tertinggi",
+            "B. Negara Midgard memiliki distribusi pendapatan paling merata",
+            "C. Negara Vanaheim memiliki tingkat ketimpangan tertinggi, sedangkan Negara Asgard paling merata",
+            "D. Negara Asgard dan Negara Vanaheim memiliki tingkat ketimpangan yang sama",
+            "E. Negara Midgard memiliki ketimpangan yang lebih tinggi daripada Negara Vanaheim"
+
         ],
-        "answer": "D. Ketimpangan tinggi",
-        "explanation": "Koefisien Gini sebesar 0,65 berada di atas 0,5 sehingga menunjukkan ketimpangan yang tinggi."
+        "answer": "C. Negara Vanaheim memiliki tingkat ketimpangan tertinggi, sedangkan Negara Asgard paling merata",
+        "explanation": "Semakin besar nilai Koefisien Gini mendekati angka 1, semakin tinggi tingkat ketimpangan pendapatan. Sebaliknya, semakin mendekati angka 0, distribusi pendapatan semakin merata. Karena Negara Vanaheim memiliki nilai tertinggi (0,66), tingkat ketimpangannya paling tinggi, sedangkan Negara Asgard (0,28) memiliki distribusi pendapatan paling merata."
     }
     ]
 }
