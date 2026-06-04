@@ -1173,7 +1173,7 @@ elif st.session_state.active_tab == "tab8":
                 "E. Kapas dibeli pabrik pemintal untuk dijadikan benang"
 
             ],
-            "answer": "C. Ibu rumah tangga membeli 1 kg telur di pasar untuk digoreng sebagai lauk sarapan.",
+            "answer": "C. Ibu rumah tangga membeli 1 kg telur di pasar untuk digoreng sebagai lauk sarapan",
             "explanation": "Telur yang dibeli oleh ibu rumah tangga langsung dikonsumsi habis oleh konsumen akhir dan tidak dijual atau diolah lagi demi keuntungan ekonomis berantai."
         },
         {
@@ -1206,7 +1206,7 @@ elif st.session_state.active_tab == "tab8":
         {
             "id": "C209",
             "question":"GDP Nominal suatu negara pada tahun tertentu tercatat lebih tinggi daripada GDP Riil. Untuk mengetahui pengaruh perubahan tingkat harga terhadap nilai produksi tersebut, pemerintah menggunakan GDP Deflator yang diperoleh dari ...",
-            "opstions": [
+            "options": [
                 "A. Perbandingan GDP Riil dengan jumlah penduduk",
                 "B. Selisih antara GDP Nominal dan GDP Riil",
                 "C. Perbandingan GDP Nominal terhadap GDP Riil yang dikalikan 100",
@@ -1884,14 +1884,14 @@ elif st.session_state.active_tab == "tab8":
                 "Hasil Analisis Kemampuan Kamu:"
             )
             st.info(
-                f"Prediksi kelemahan utama berdasarkan KNN: {prediksi}"
+                f"Kelemahan utama kamu ada di soal level {prediksi}, nih"
             )
 
-            st.write(f"C1 (Mengingat): {level_count['C1']} kesalahan")
-            st.write(f"C2 (Memahami): {level_count['C2']} kesalahan")
-            st.write(f"C3 (Menerapkan): {level_count['C3']} kesalahan")
-            st.write(f"C4 (Menganalisis): {level_count['C4']} kesalahan")
-            st.write(f"C5 (Mengevaluasi): {level_count['C5']} kesalahan")
+            st.write(f"Level mengingat(C1) ada {level_count['C1']} kesalahan")
+            st.write(f"Level memahami(C2) ada {level_count['C2']} kesalahan")
+            st.write(f"Level menerapkan(C3) ada {level_count['C3']} kesalahan")
+            st.write(f"Level menganalisis(C4) ada {level_count['C4']} kesalahan")
+            st.write(f"Level mengevaluasi(C5) ada {level_count['C5']} kesalahan")
             
             nama_level = {
                 "C1": "Mengingat",
@@ -1902,15 +1902,12 @@ elif st.session_state.active_tab == "tab8":
             }
 
             st.warning(
-                f"Level yang perlu diperkuat: {prediksi} ({nama_level[prediksi]})"
+                f"Level yang perlu kamu perkuat {prediksi} ({nama_level[prediksi]}), ya"
             )
-
+            st.divider()
+            st.subheader("Aku sudah siapkan rekomendasi materi yang bisa kamu pelajari lagi, nih...")
             if len(rekomendasi) > 0:
-
-                st.success(
-                    "Sistem berhasil menganalisis pola kesalahan menggunakan algoritma KNN."
-                )
-
+            
                 for item in rekomendasi:
 
                     st.write(
@@ -1920,13 +1917,13 @@ elif st.session_state.active_tab == "tab8":
             else:
 
                 st.success(
-                    "Hebat! Tidak ada materi yang perlu direkomendasikan."
+                    "Hebat! Saat ini kemampuan kamu sudah sangat baik. Pertahankan dan selalu semangat belajar ekonomi, ya!."
                 )
 
         except Exception as e:
 
             st.error(
-                f"Terjadi kesalahan saat memuat data KNN: {e}"
+                f"Yahh:( sepertinya ada kesalahan saat memuat: {e}"
             )
 
         pdf_output = generate_pdf(
