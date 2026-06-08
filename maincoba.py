@@ -1736,7 +1736,7 @@ elif st.session_state.active_tab == "tab8":
                 st.success(f"Jawaban Anda: {user_answers[idx]} ✅")
 
             else:
-                st.error(f"Jawaban Anda: {user_answers[idx]} ❌")
+                st.error(f"Jawaban Kamu: {user_answers[idx]} ❌")
                 st.info(f"Jawaban Benar: {q['answer']}")
                 st.markdown(f"Pembahasan: {q['explanation']}")
 
@@ -1752,9 +1752,7 @@ elif st.session_state.active_tab == "tab8":
                 sep=";"
             )
 
-            # ----------------------------------------
-            # HITUNG JUMLAH KESALAHAN TIAP LEVEL
-            # ----------------------------------------
+            #MENGHITUNG JUMLAH SALAH TIAP LEVEL
 
             def hitung_level_kognitif(soal_salah):
 
@@ -1777,9 +1775,7 @@ elif st.session_state.active_tab == "tab8":
 
                 return level_count
 
-            # ----------------------------------------
-            # FUNGSI REKOMENDASI
-            # ----------------------------------------
+            #FUNGSI REKOMENDASI
 
             def rekomendasi_materi(soal_salah):
 
@@ -1789,10 +1785,6 @@ elif st.session_state.active_tab == "tab8":
                 level_count = hitung_level_kognitif(
                     soal_salah
                 )
-
-                # ------------------------------------
-                # UBAH LEVEL MENJADI VEKTOR ANGKA
-                # ------------------------------------
                 
                 profil_siswa = pd.DataFrame(
                     [[
@@ -1808,7 +1800,6 @@ elif st.session_state.active_tab == "tab8":
                 #DATATRAINTEST KNN
         
                 data = pd.read_csv("data.csv")
-                print(data)
 
                 X = data[["C1","C2","C3","C4","C5"]]
                 y = data["Label"]
@@ -1841,9 +1832,7 @@ elif st.session_state.active_tab == "tab8":
 
                 return rekomendasi[:10], prediksi
 
-            # ----------------------------------------
-            # JALANKAN REKOMENDASI
-            # ----------------------------------------
+            #MENAMPILKAN REKOMENDASI
 
             level_count = hitung_level_kognitif(
                 soal_salah
@@ -2022,7 +2011,8 @@ elif st.session_state.active_tab == "tab9":
     st.subheader("Fakta 5")
     st.image('simon.jpg')
     st.info("""
-    Tahukah kamu kalau pencipta formula PDB modern sendiri justru membenci ciptaannya jika digunakan untuk mengukur kesejahteraan? Simon Kuznets, ekonom yang mengembangkan konsep ini pada tahun 1934 untuk Pemerintah AS, secara tegas memperingatkan dalam laporan pertamanya ke Kongres:
+    Tahukah kamu?
+    Pencipta formula PDB modern sendiri justru membenci ciptaannya jika digunakan untuk mengukur kesejahteraan? Simon Kuznets, ekonom yang mengembangkan konsep ini pada tahun 1934 untuk Pemerintah AS, secara tegas memperingatkan dalam laporan pertamanya ke Kongres:
     
     "Kesejahteraan suatu bangsa hampir tidak dapat diukur dari tingkat pendapatan nasionalnya."
             
