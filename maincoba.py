@@ -1367,9 +1367,6 @@ elif st.session_state.active_tab == "tab8":
 
         y = height - 2.2*cm
 
-        # =================================================
-        # IDENTITAS
-        # =================================================
 
         c.rect(1*cm, y-1.1*cm, 18*cm, 1.2*cm)
 
@@ -1391,9 +1388,6 @@ elif st.session_state.active_tab == "tab8":
 
         y -= 1.8*cm
 
-        # =================================================
-        # ANALISIS KNN
-        # =================================================
 
         c.setFont("Helvetica-Bold", 10)
 
@@ -1431,10 +1425,6 @@ elif st.session_state.active_tab == "tab8":
         )
 
         y -= 1*cm
-
-        # =================================================
-        # TABEL C1-C5
-        # =================================================
 
         c.setFont("Helvetica-Bold", 9)
 
@@ -1474,9 +1464,6 @@ elif st.session_state.active_tab == "tab8":
 
             y -= 0.5*cm
 
-        # =================================================
-        # REKOMENDASI
-        # =================================================
 
         y -= 0.5*cm
 
@@ -1511,9 +1498,6 @@ elif st.session_state.active_tab == "tab8":
 
             y -= 0.45*cm
 
-        # =================================================
-        # RINGKASAN JAWABAN (2 KOLOM)
-        # =================================================
 
         y -= 0.5*cm
 
@@ -1560,13 +1544,7 @@ elif st.session_state.active_tab == "tab8":
                     y - ((i-len(all_questions)//2)*0.35*cm),
                     f"Soal {i+1} : {status}"
         )
-            # ==========================================
-            # HALAMAN BARU
-            # ==========================================
-
-                # ==========================================
-        # HALAMAN PEMBAHASAN
-        # ==========================================
+    
 
         c.showPage()
 
@@ -1733,7 +1711,7 @@ elif st.session_state.active_tab == "tab8":
             if user_answers[idx] == q["answer"]:
                 score += 1
             else:
-                # simpan ID soal yang salah
+               
                 soal_salah.append(q["id"])
 
         if score <= 5:
@@ -1764,11 +1742,7 @@ elif st.session_state.active_tab == "tab8":
 
             st.divider()
 
-    #REKOMENDASI MATERI DENGAN KNN
-    # ============================================
-    # KNN REKOMENDASI MATERI BERDASARKAN LEVEL KOGNITIF
-    # ============================================
-
+        #REKOMENDASI MATERI DENGAN KNN
         rekomendasi = []
 
         try:
@@ -1831,9 +1805,7 @@ elif st.session_state.active_tab == "tab8":
                     columns=["C1","C2","C3","C4","C5"]
                 )
 
-                # ------------------------------------
-                # DATA LATIHAN KNN
-                # ------------------------------------
+                #DATATRAINTEST KNN
         
                 data = pd.read_csv("data.csv")
                 print(data)
