@@ -1136,13 +1136,13 @@ elif st.session_state.active_tab == "tab8":
         },
         {
             "id": "C205",
-            "question": """
-                    Perhatikan beberapa kegiatan ekonomi berikut!
-                    1.	Sebuah pabrik sepatu membeli kulit untuk diolah menjadi sepatu. 
-                    2.	Seorang siswa membeli sepatu untuk digunakan ke sekolah. 
-                    3.	Sebuah toko roti membeli tepung untuk membuat roti. 
-                    4.	Seorang ibu membeli roti untuk dikonsumsi keluarganya. 
-                    Berdasarkan konsep barang antara dan barang akhir, pasangan yang termasuk barang akhir adalah ...
+            "question":"""
+            Perhatikan beberapa kegiatan ekonomi berikut!
+            - 1. Sebuah pabrik sepatu membeli kulit untuk diolah menjadi sepatu. 
+            - 2. Seorang siswa membeli sepatu untuk digunakan ke sekolah. 
+            - 3. Sebuah toko roti membeli tepung untuk membuat roti. 
+            - 4. Seorang ibu membeli roti untuk dikonsumsi keluarganya. 
+            Berdasarkan konsep barang antara dan barang akhir, pasangan yang termasuk barang akhir adalah ...
             """,
             "options": [
                 "A. (1) dan (3)",
@@ -1233,6 +1233,7 @@ elif st.session_state.active_tab == "tab8":
             -	Pajak Perseroan: Rp3.000 
             -	Transfer Payment: Rp12.000 
             -	Pajak Langsung: Rp14.000 
+            Besar nilai Personal Income yang tepat berdasarkan data di atas adalah...
             """,
             "options": [
                 "A. Rp485.000 miliar",
@@ -1847,12 +1848,6 @@ elif st.session_state.active_tab == "tab8":
                 f"Kelemahan utama kamu ada di soal level {prediksi}, nih"
             )
 
-            st.write(f"Level mengingat(C1) ada {level_count['C1']} kesalahan")
-            st.write(f"Level memahami(C2) ada {level_count['C2']} kesalahan")
-            st.write(f"Level menerapkan(C3) ada {level_count['C3']} kesalahan")
-            st.write(f"Level menganalisis(C4) ada {level_count['C4']} kesalahan")
-            st.write(f"Level mengevaluasi(C5) ada {level_count['C5']} kesalahan")
-            
             nama_level = {
                 "C1": "Mengingat",
                 "C2": "Memahami",
@@ -1864,14 +1859,17 @@ elif st.session_state.active_tab == "tab8":
             for level, jumlah in level_count.items():
 
                 if jumlah == 0:
-                    st.success(
-                        f"Level {nama_level[level]} ({level}): Semua jawaban benar"
-                    )
 
-                else:
-                    st.warning(
-                        f"Level {nama_level[level]} ({level}): {jumlah} kesalahan"
-        )
+                    st.success(
+                    f"Level {nama_level[level]} ({level}): Semua jawaban benar ✅"
+                )
+
+            else:
+
+                st.write(
+                    f"Level {nama_level[level]} ({level}) terdapat {jumlah} kesalahan"
+                )
+
             st.warning(
                 f"Level yang perlu kamu perkuat {prediksi} ({nama_level[prediksi]}), ya"
             )
