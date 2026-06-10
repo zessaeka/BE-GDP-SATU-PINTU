@@ -1672,13 +1672,16 @@ elif st.session_state.active_tab == "tab8":
         class_name = st.text_input("Kelas")
 
         for idx, q in enumerate(all_questions):
-            st.subheader(f"Soal {idx + 1}")
+            st.subheader(f"No. {idx + 1}")
+
+            st.markdown(q["question"])
 
             user_answers[idx] = st.radio(
-                q["question"],
+                "",
                 q["options"],
                 index=None,
-                key=f"q{idx}"
+                key=f"q{idx}",
+                label_visibility="collapsed"
             )
 
         submitted = st.form_submit_button("Kirim Jawaban")
@@ -1730,10 +1733,10 @@ elif st.session_state.active_tab == "tab8":
 
         for idx, q in enumerate(all_questions):
 
-            st.write(f"Soal {idx + 1}: {q['question']}")
+            st.write(f"No. {idx + 1}: {q['question']}")
 
             if user_answers[idx] == q["answer"]:
-                st.success(f"Jawaban Anda: {user_answers[idx]} ✅")
+                st.success(f"Jawaban Kamu: {user_answers[idx]} ✅")
 
             else:
                 st.error(f"Jawaban Kamu: {user_answers[idx]} ❌")
