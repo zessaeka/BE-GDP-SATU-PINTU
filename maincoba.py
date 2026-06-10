@@ -1859,20 +1859,12 @@ elif st.session_state.active_tab == "tab8":
                 "C5": "Mengevaluasi"
             }
 
-            for level, jumlah in level_count.items():
-
-                if jumlah == 0:
-
-                    st.success(
-                    f"Level {nama_level[level]} ({level}): Semua jawaban benar ✅"
-                )
-
-            else:
-
-                st.write(
-                    f"Level {nama_level[level]} ({level}) terdapat {jumlah} kesalahan"
-                )
-
+            st.write(f"Level mengingat(C1) ada {level_count['C1']} kesalahan")
+            st.write(f"Level memahami(C2) ada {level_count['C2']} kesalahan")
+            st.write(f"Level menerapkan(C3) ada {level_count['C3']} kesalahan")
+            st.write(f"Level menganalisis(C4) ada {level_count['C4']} kesalahan")
+            st.write(f"Level mengevaluasi(C5) ada {level_count['C5']} kesalahan")
+            
             st.warning(
                 f"Level yang perlu kamu perkuat {prediksi} ({nama_level[prediksi]}), ya"
             )
