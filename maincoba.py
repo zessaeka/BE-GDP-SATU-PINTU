@@ -1137,13 +1137,12 @@ elif st.session_state.active_tab == "tab8":
         {
             "id": "C205",
             "question": """
-            Perhatikan beberapa kegiatan ekonomi berikut!
-            1.	Sebuah pabrik sepatu membeli kulit untuk diolah menjadi sepatu. 
-            2.	Seorang siswa membeli sepatu untuk digunakan ke sekolah. 
-            3.	Sebuah toko roti membeli tepung untuk membuat roti. 
-            4.	Seorang ibu membeli roti untuk dikonsumsi keluarganya. 
-            Berdasarkan konsep barang antara dan barang akhir, pasangan yang termasuk barang akhir adalah ...
-
+                    Perhatikan beberapa kegiatan ekonomi berikut!
+                    1.	Sebuah pabrik sepatu membeli kulit untuk diolah menjadi sepatu. 
+                    2.	Seorang siswa membeli sepatu untuk digunakan ke sekolah. 
+                    3.	Sebuah toko roti membeli tepung untuk membuat roti. 
+                    4.	Seorang ibu membeli roti untuk dikonsumsi keluarganya. 
+                    Berdasarkan konsep barang antara dan barang akhir, pasangan yang termasuk barang akhir adalah ...
             """,
             "options": [
                 "A. (1) dan (3)",
@@ -1394,7 +1393,7 @@ elif st.session_state.active_tab == "tab8":
         c.drawString(
             1*cm,
             y,
-            "HASIL ANALISIS KNN"
+            "HASIL ANALISIS KEMAMPUAN"
         )
 
         y -= 0.4*cm
@@ -1431,7 +1430,7 @@ elif st.session_state.active_tab == "tab8":
         c.drawString(
             1*cm,
             y,
-            "RINGKASAN KESALAHAN BERDASARKAN TAKSONOMI BLOOM"
+            "RINGKASAN KESALAHAN BERDASARKAN LEVEL KOGNITIF"
         )
 
         y -= 0.4*cm
@@ -1554,7 +1553,7 @@ elif st.session_state.active_tab == "tab8":
         c.drawCentredString(
             width/2,
             height-1*cm,
-            "PEMBAHASAN HASIL LATIHAN"
+            "PEMBAHASAN HASIL LATIHAN SOAL"
         )
 
         y = height - 1.7*cm
@@ -1862,6 +1861,17 @@ elif st.session_state.active_tab == "tab8":
                 "C5": "Mengevaluasi"
             }
 
+            for level, jumlah in level_count.items():
+
+                if jumlah == 0:
+                    st.success(
+                        f"Level {nama_level[level]} ({level}): Semua jawaban benar"
+                    )
+
+                else:
+                    st.warning(
+                        f"Level {nama_level[level]} ({level}): {jumlah} kesalahan"
+        )
             st.warning(
                 f"Level yang perlu kamu perkuat {prediksi} ({nama_level[prediksi]}), ya"
             )
