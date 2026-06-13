@@ -850,7 +850,7 @@ elif st.session_state.active_tab == "tab6":
     st.write("b. Pendapatan perkapita riil")
     st.write("Pendapatan perkapita riil = Rp1.000.000/10 = Rp100.000/orang")
     st.warning("Psst, kalau masih ada kesulitan bisa dibaca dan dipahami kembali, ya.")
-    st.divier()
+    st.divider()
     st.write("Berikut ringkasan perbandingan pendapataan perkapita nominal dan riil:")
     st.image('ssppnppr.png')
     if st.button("Kembali ke Menu Utama"):
@@ -1835,7 +1835,6 @@ elif st.session_state.active_tab == "tab8":
 
                 return rekomendasi[:10], prediksi
 
-            #MENAMPILKAN REKOMENDASI
 
             level_count = hitung_level_kognitif(
                 soal_salah
