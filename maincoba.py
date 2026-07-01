@@ -657,7 +657,7 @@ elif st.session_state.active_tab == "tab5":
     Contoh kasusnya seperti ini, ketika kita membeli HP buatan Amerika seharga Rp15 juta, transaksi itu otomatis tercatat di komponen Konsumsi (C) kit sebesar Rp15 juta. Padahal, HP itu tidak diproduksi di Indonesia. Agar angka PDB kita tidak membengkak oleh barang buatan luar negeri, maka di bagian akhir rumus, nilai Rp15 juta tadi harus dikurangkan melalui komponen Impor (M).Jadi, fungsi minus pada M adalah untuk menghapus pengeluaran barang luar negeri yang telanjur tercatat di komponen C, I, atau G.
     """)
     st.info("""Eits, ada logika terbalik nih antara ekspor dan impor. Pasti kita sering berpikir: Lho, 'kan kalau kita impor barang, kita mengeluarkan uang untuk belanja. Kenapa di pendekatan pengeluaran malah dikurangi?
-    Impor diberi tanda minus karena barang impor tersebut sudah telanjur ikut terhitung di komponen Konsumsi (C) atau Investasi (I) masyarakat sebelumnya. Jadi, tanda minus pada Impor (M) berfungsi sebagai faktor pengurang agar kita benar-benar hanya menghitung pengeluaran untuk barang yang diproduksi di dalam negeri saja. Menjelaskan logika pelurusan ini ke siswa SMA biasanya membutuhkan analogi yang kuat.
+    Impor diberi tanda minus karena barang impor tersebut sudah telanjur ikut terhitung di komponen Konsumsi (C) atau Investasi (I) masyarakat sebelumnya. Jadi, tanda minus pada Impor (M) berfungsi sebagai faktor pengurang agar kita benar-benar hanya menghitung pengeluaran untuk barang yang diproduksi di dalam negeri saja.
     """)
     st.write("Bagaimana, apakah sudah paham? Yuk scroll ke atas dan pahami kembali jika masih kesulitan.")
     st.divider()
