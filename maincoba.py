@@ -1352,7 +1352,7 @@ elif st.session_state.active_tab == "tab8":
             "C4": "Menganalisis",
             "C5": "Mengevaluasi"
         }
-
+       
         jumlah_benar = score
         jumlah_salah = len(all_questions) - score
 
@@ -1410,19 +1410,37 @@ elif st.session_state.active_tab == "tab8":
 
         c.setFont("Helvetica", 8)
 
-        c.drawString(
-            1.2*cm,
-            y,
-            f"Prediksi Kelemahan Utama : {prediksi} ({nama_level[prediksi]})"
-        )
+        if prediksi is None:
 
-        y -= 0.7*cm
+            c.drawString(
+                1.2*cm,
+                y,
+                "Prediksi Kelemahan Utama : Tidak ada"
+            )
 
-        c.drawString(
-            1.2*cm,
-            y,
-            f"Level yang Perlu Diperkuat : {prediksi} ({nama_level[prediksi]})"
-        )
+            y -= 0.7*cm
+
+            c.drawString(
+                1.2*cm,
+                y,
+                "Level yang Perlu Diperkuat : Tidak ada (Semua jawaban benar)"
+            )
+
+        else:
+
+            c.drawString(
+                1.2*cm,
+                y,
+                f"Prediksi Kelemahan Utama : {prediksi} ({nama_level[prediksi]})"
+            )
+
+            y -= 0.7*cm
+
+            c.drawString(
+                1.2*cm,
+                y,
+                f"Level yang Perlu Diperkuat : {prediksi} ({nama_level[prediksi]})"
+            )
 
         y -= 1*cm
 
@@ -1746,148 +1764,166 @@ elif st.session_state.active_tab == "tab8":
             st.divider()
 
         #REKOMENDASI MATERI DENGAN KNN
-        rekomendasi = []
+        if len(soal_salah) == 0:
 
-        try:
+            rekomendasi = []
+            prediksi = None
 
-            materi = pd.read_csv(
-                "Somat.csv",
-                sep=";"
-            )
-
-            #MENGHITUNG JUMLAH SALAH TIAP LEVEL
-
-            def hitung_level_kognitif(soal_salah):
-
-                data_salah = materi[
-                    materi["ID"].isin(soal_salah)
-                ]
-
-                level_count = {
+            level_count = {
                     "C1": 0,
                     "C2": 0,
                     "C3": 0,
                     "C4": 0,
                     "C5": 0
-                }
+            }
 
-                for level in data_salah["Level_Kognitif"]:
+            st.success("Luar biasa! Semua jawaban kamu benar.")
+            st.info("Tidak ada materi yang perlu direkomendasikan karena seluruh soal berhasil dijawab dengan benar.")
 
-                    if level in level_count:
-                        level_count[level] += 1
+        else:
 
-                return level_count
+            rekomendasi = []
 
-            #FUNGSI REKOMENDASI
+            try:
 
-            def rekomendasi_materi(soal_salah):
+                materi = pd.read_csv(
+                    "Somat.csv",
+                    sep=";"
+                )
 
-                if len(soal_salah) == 0:
-                    return []
+                #MENGHITUNG JUMLAH SALAH TIAP LEVEL
+
+                def hitung_level_kognitif(soal_salah):
+
+                    data_salah = materi[
+                        materi["ID"].isin(soal_salah)
+                    ]
+
+                    level_count = {
+                        "C1": 0,
+                        "C2": 0,
+                        "C3": 0,
+                        "C4": 0,
+                        "C5": 0
+                    }
+
+                    for level in data_salah["Level_Kognitif"]:
+
+                        if level in level_count:
+                            level_count[level] += 1
+
+                    return level_count
+
+                #FUNGSI REKOMENDASI
+
+                def rekomendasi_materi(soal_salah):
+
+                    if len(soal_salah) == 0:
+                        return [], None
+
+                    level_count = hitung_level_kognitif(
+                        soal_salah
+                    )
+                    
+                    profil_siswa = pd.DataFrame(
+                        [[
+                            level_count["C1"],
+                            level_count["C2"],
+                            level_count["C3"],
+                            level_count["C4"],
+                            level_count["C5"]
+                        ]],
+                        columns=["C1","C2","C3","C4","C5"]
+                    )
+
+                    #DATATRAINTEST KNN
+            
+                    data = pd.read_csv("data.csv")
+
+                    X = data[["C1","C2","C3","C4","C5"]]
+                    y = data["Label"]
+
+                    X_train, X_test, y_train, y_test = train_test_split(
+                        X, y,
+                        test_size=0.2,
+                        random_state=42
+                    )
+
+                    for k in [1]:
+                        knn = KNeighborsClassifier(n_neighbors=k)
+                        knn.fit(X_train, y_train)
+
+                        y_pred = knn.predict(X_test)
+
+                        acc = accuracy_score(y_test, y_pred)
+
+                        print(f"k={k} -> {acc*100:.2f}%")
+
+                    knn = KNeighborsClassifier(n_neighbors=1)
+                    knn.fit(X_train, y_train)
+
+                    prediksi = knn.predict(profil_siswa)[0]
+                    
+                    rekomendasi = materi[
+                    materi["Level_Kognitif"] == prediksi
+
+                    ]["Materi"]
+
+                    return rekomendasi[:10], prediksi
+
 
                 level_count = hitung_level_kognitif(
                     soal_salah
                 )
-                
-                profil_siswa = pd.DataFrame(
-                    [[
-                        level_count["C1"],
-                        level_count["C2"],
-                        level_count["C3"],
-                        level_count["C4"],
-                        level_count["C5"]
-                    ]],
-                    columns=["C1","C2","C3","C4","C5"]
+                rekomendasi, prediksi = rekomendasi_materi(
+                    soal_salah
                 )
 
-                #DATATRAINTEST KNN
-        
-                data = pd.read_csv("data.csv")
-
-                X = data[["C1","C2","C3","C4","C5"]]
-                y = data["Label"]
-
-                X_train, X_test, y_train, y_test = train_test_split(
-                    X, y,
-                    test_size=0.2,
-                    random_state=42
+                st.subheader(
+                    "Hasil Analisis Kemampuan Kamu:"
+                )
+                st.info(
+                    f"Kelemahan utama kamu ada di soal level {prediksi}, nih"
                 )
 
-                for k in [1]:
-                    knn = KNeighborsClassifier(n_neighbors=k)
-                    knn.fit(X_train, y_train)
+                nama_level = {
+                    "C1": "Mengingat",
+                    "C2": "Memahami",
+                    "C3": "Menerapkan",
+                    "C4": "Menganalisis",
+                    "C5": "Mengevaluasi"
+                }
 
-                    y_pred = knn.predict(X_test)
-
-                    acc = accuracy_score(y_test, y_pred)
-
-                    print(f"k={k} -> {acc*100:.2f}%")
-
-                knn = KNeighborsClassifier(n_neighbors=1)
-                knn.fit(X_train, y_train)
-
-                prediksi = knn.predict(profil_siswa)[0]
+                st.write(f"Level mengingat(C1) ada {level_count['C1']} kesalahan")
+                st.write(f"Level memahami(C2) ada {level_count['C2']} kesalahan")
+                st.write(f"Level menerapkan(C3) ada {level_count['C3']} kesalahan")
+                st.write(f"Level menganalisis(C4) ada {level_count['C4']} kesalahan")
+                st.write(f"Level mengevaluasi(C5) ada {level_count['C5']} kesalahan")
                 
-                rekomendasi = materi[
-                materi["Level_Kognitif"] == prediksi
+                st.warning(
+                    f"Level yang perlu kamu perkuat {prediksi} ({nama_level[prediksi]}), ya"
+                )
+                st.divider()
+                st.subheader("Aku sudah siapkan rekomendasi materi yang bisa kamu pelajari lagi, nih...")
+                if len(rekomendasi) > 0:
+                
+                    for item in rekomendasi:
 
-                ]["Materi"]
+                        st.write(
+                            f"• {item}"
+                        )
 
-                return rekomendasi[:10], prediksi
+                else:
 
-
-            level_count = hitung_level_kognitif(
-                soal_salah
-            )
-            rekomendasi, prediksi = rekomendasi_materi(
-                soal_salah
-            )
-
-            st.subheader(
-                "Hasil Analisis Kemampuan Kamu:"
-            )
-            st.info(
-                f"Kelemahan utama kamu ada di soal level {prediksi}, nih"
-            )
-
-            nama_level = {
-                "C1": "Mengingat",
-                "C2": "Memahami",
-                "C3": "Menerapkan",
-                "C4": "Menganalisis",
-                "C5": "Mengevaluasi"
-            }
-
-            st.write(f"Level mengingat(C1) ada {level_count['C1']} kesalahan")
-            st.write(f"Level memahami(C2) ada {level_count['C2']} kesalahan")
-            st.write(f"Level menerapkan(C3) ada {level_count['C3']} kesalahan")
-            st.write(f"Level menganalisis(C4) ada {level_count['C4']} kesalahan")
-            st.write(f"Level mengevaluasi(C5) ada {level_count['C5']} kesalahan")
-            
-            st.warning(
-                f"Level yang perlu kamu perkuat {prediksi} ({nama_level[prediksi]}), ya"
-            )
-            st.divider()
-            st.subheader("Aku sudah siapkan rekomendasi materi yang bisa kamu pelajari lagi, nih...")
-            if len(rekomendasi) > 0:
-            
-                for item in rekomendasi:
-
-                    st.write(
-                        f"• {item}"
+                    st.success(
+                        "Hebat! Saat ini kemampuan kamu sudah sangat baik. Pertahankan dan selalu semangat belajar ekonomi, ya!."
                     )
 
-            else:
+            except Exception as e:
 
-                st.success(
-                    "Hebat! Saat ini kemampuan kamu sudah sangat baik. Pertahankan dan selalu semangat belajar ekonomi, ya!."
+                st.error(
+                    f"Yahh:( sepertinya ada kesalahan saat memuat: {e}"
                 )
-
-        except Exception as e:
-
-            st.error(
-                f"Yahh:( sepertinya ada kesalahan saat memuat: {e}"
-            )
 
         pdf_output = generate_pdf(
             name, 
