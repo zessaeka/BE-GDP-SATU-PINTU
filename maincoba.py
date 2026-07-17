@@ -100,14 +100,19 @@ elif st.session_state.active_tab == "tab1":
     modal, stabilitas nasional, serta kebijakan yang diterapkan.
     Pendapatan nasional mencerminkan tingkat produksi barang dan jasa yang dihasilkan oleh suatu negara.""")
     st.divider()
-    st.subheader("Pendekatan Perhitungan Pendapatan Nasional")
+    st.subheader("Definisi Perhitungan Pendapatan Nasional")
     st.write("Perhitungan pendapatan nasional dapat menggunakan tiga macam pendekatan, yaitu:")
     st.markdown("""
-    - Pendekatan Produksi. Yaitu menghitung pendapatan nasional dengan menjumlahkan nilai tambah semua output yang dihasilkan.""")
+    - Pendekatan Produksi. Yaitu menghitung pendapatan nasional dengan menjumlahkan nilai akhir semua output yang dihasilkan.""")
     st.info("Rumusnya: Y = (P1 x Q1) + (P2 x Q2).... (Pn x Qn)")
     st.markdown("""
     - Pendekatan Pendapatan. Yaitu menghitung pendapatan nasional dengan menjumlahkan semua pendapatan yang diperoleh pelaku ekonomi, baik individu maupun perusahaan.""")
-    st.info("Rumusnya: Y = r + w + i + p")
+    st.info("""Rumusnya: Y = r + w + i + p
+            o	r = rent (sewa)
+            o	w = wage (upah)
+            o	i = interest (bunga)
+            o	p = profit (laba)
+            """)
     st.markdown("""
     - Pendekatan Pengeluaran. Yaitu menghitung pendapatan nasional dengan menjumlahkan seluruh pengeluaran yang dilakukan oleh empat pelaku ekonomi utama (rumah tangga konsumen, perusahaan, pemerintah, dan masyarakat luar negeri) dalam suatu periode tertentu.
     """)
@@ -121,14 +126,14 @@ elif st.session_state.active_tab == "tab1":
     - Memberikan pedoman kepada pemerintah untuk menyusun kebijakan pembangunan ekonomi nasional.
     - Menilai kinerja ekonomi suatu negara berdasarkan data pendapatan nasional.""")
     st.divider()            
-    st.subheader("Konsep dan Urutan Komponen Pendapatan Nasional")
+    st.subheader("Konsep Pendapatan Nasional")
     st.write("1. Gross Domestic Product (GDP)")
     st.write("""GDP adalah total nilai pasar dari seluruh barang dan jasa jadi yang diproduksi di dalam batas wilayah geografis
     suatu negara selama periode tertentu (biasanya satu tahun). Teori GDP menganut asas teritorial atau wilayah.
     Artinya, faktor produksi milik siapapun (WNI maupun warga WNA) yang beroperasi di dalam negeri tersebut, nilainya mutlak dihitung ke dalam GDP.
     Nilainya masih kotor (Gross)""")
-    st.write("""Supaya memudahkan kita dalam memahami, bayangkan kita punya restoran. Semua uang yang masuk dari penjualan makanan di dalam gedung restoran kita itu adalah GDP.
-    kita tidak peduli apakah yang memasak itu kokinya WNI atau koki dari WNA, dan kita juga tidak peduli apakah pembelinya WNI atau WNA.
+    st.write("""Supaya memudahkan kita dalam memahami, bayangkan kita punya negara yang dianalogikan sebagai sebuah restoran. 
+    Semua uang yang masuk dari penjualan makanan di dalam gedung restoran kita itu adalah GDP. kita tidak peduli apakah yang memasak itu kokinya WNI atau koki dari WNA, dan kita juga tidak peduli apakah pembelinya WNI atau WNA. 
     Selama transaksi dan produksinya terjadi di dalam gedung restoran kita, semuanya dihitung sebagai omset kotor restoran.
     """)
     
@@ -137,7 +142,9 @@ elif st.session_state.active_tab == "tab1":
     warga negara suatu negara, tidak peduli di mana produksi itu terjadi secara geografis. Teori GNP menganut asas nasionalitas atau kewarganegaraan.
     Untuk mendapat nilai GNP, nilai GDP tadi harus disesuaikan dengan Pendapatan Neto terhadap Luar Negeri (pendapatan warga negara di luar negeri dikurangi pendapatan warga asing di dalam negeri).
     """)
-    st.write("""Nah, tadi di GDP kita menghitung seluruh omset restoran tanpa melihat status kwarganegaraan. Pada konsep GNP, kita hanya menghitung omset yang dihasilkan oleh WNI saja, sehingga harus dikurangkan dengan pendapatan WNA.
+    st.write(""" Nah, tadi di GDP kita menghitung seluruh omset restoran tanpa melihat status kwarganegaraan. 
+    Selanjutnya, bayangkan restoran tersebut membuka cabang baru di luar negeri yang pekerjanya ada yang WNI dan WNA. Karena konsep GNP menghitung pendapatan berdasarkan kwarganegaraan, 
+            kita hanya menghitung omset yang dihasilkan oleh WNI saja, sehingga harus dikurangkan dengan pendapatan WNA.
     """)
     st.info("Rumusnya: GNP = GDP + Pendapatan WNI di Luar Negeri - Pendapatan WNA di Dalam Negeri")
     
@@ -157,7 +164,7 @@ elif st.session_state.active_tab == "tab1":
     jadi itu bukan termasuk omset bersih restoran ya, jadi harus dikurangkan. Di sisi lain, kita juga mendapatkan bantuan subsidi gas dari pemerintah yang meringankan modalmu. Jadi, kita kurangi uang pajak itu dan masukkan modal subsidi tadi untuk melihat berapa nilai
     riil uang kas yang murni dihasilkan dari kerja keras pekerja restoran.
     """)
-    st.info("Rumusnya: NNI = NNP - Pajak Tidak Langsung + Subsidi")
+    st.info("Rumusnya: NNI = NNP - Pajak Tidak Langsung")
     
     st.write("5. Personal Income (PI).")
     st.write("""PI adalah bagian dari pendapatan nasional yang benar-benar diterima oleh setiap individu/orang per orang dalam masyarakat. Namun, tidak semua pendapatan nasional yaitu nilai NNI langsung mengalir ke kantong individu, 
@@ -216,7 +223,7 @@ elif st.session_state.active_tab == "tab1":
         if jawaban_pi is None:
             st.warning("Silakan pilih salah satu jawaban terlebih dahulu, ya!")
 
-        if jawaban_pi == "B. Rp455.000 miliar":
+        if jawaban_pi == "A. Rp445.000 miliar":
 
             st.balloons()
 
@@ -243,11 +250,11 @@ elif st.session_state.active_tab == "tab1":
 
     3. Cari NNI
 
-    NNI = NNP - Pajak Tidak Langsung + Subsidi
+    NNI = NNP - Pajak Tidak Langsung
 
-    = 470.000 - 22.000 + 7.000
+    = 470.000 - 22.000
 
-    = Rp455.000
+    = Rp448.000
 
     4. Cari PI
 
@@ -260,9 +267,9 @@ elif st.session_state.active_tab == "tab1":
 
     PI = (NNI + Transfer Payment) - Pengurang
 
-    = (455.000 + 12.000) - 15.000
+    = (448.000 + 12.000) - 15.000
 
-    = Rp455.000 miliar
+    = Rp445.000 miliar
     """)
             st.warning("Masih semangat? Yuk, kita lanjut ke menu belajar selanjutnya!")
 
@@ -270,7 +277,7 @@ elif st.session_state.active_tab == "tab1":
 
             st.error("Jawaban kamu masih kurang tepat!")
 
-            if jawaban_pi == "A. Rp445.000 miliar":
+            if jawaban_pi == "B. Rp455.000 miliar":
                 st.warning("""
     Kamu kemungkinan salah mengurangi komponen pengurang PI 
     atau lupa menambahkan transfer payment.
@@ -370,6 +377,7 @@ elif st.session_state.active_tab == "tab3":
         else:
             st.warning("Yuk belajar lagi supaya makin paham.")
 
+    st.subheader("Metode Perhitungan Pendekatan Produksi")
     st.write("""
     Setelah kita memahami konsep barang antara dan barang akhir, barulah kita bisa menghitung nilai pendapatan nasional dengan mudah.
     Ingat, pada pendekatan produksi yang kita hitung adalah total dari nilai tambah produksi dari seluruh sektor.""")
@@ -378,14 +386,14 @@ elif st.session_state.active_tab == "tab3":
     st.image('produksi.png')
 
     st.write("""
-    1. Apa itu Output Total?""")
-    st.write("""Output Total adalah harga jual akhir suatu barang. Coba kita lihat data di atas pada kolom Nilai Penjualan (Output Total).
-        Jika kita menjumlahkan semua Output Total tersebut, di sinilah terjadi kesalahan fatal bernama double counting atau penghitungan ganda.
+    1. Apa itu Nilai Akhir?""")
+    st.write("""Nilai Akhir adalah harga jual akhir suatu barang. Coba kita lihat data di atas pada kolom Nilai Penjualan (Output Total).
+        Jika kita menjumlahkan semua nilai akhir tersebut, di sinilah terjadi kesalahan fatal bernama double counting atau penghitungan ganda.
         Mengapa? Karena di dalam harga kain yang Rp60.000 itu, sebenarnya sudah termasuk harga benang dan harga kapas. Kalau dijumlahkan semua, harga kapasnya akan terhitung berkali-kali.
         Sehingga nilainya tidak akurat.""")
     
     st.write("""
-    2. Apa itu Nilai Tambah (Value Added)?""")
+    2. Apa itu Nilai Tambah?""")
     st.write("""Nilai Tambah adalah selisih peningkatan harga karena adanya tenaga kerja dan proses produksi baru. Seperti tabel di atas, 
         Ketika pabrik benang membeli kapas seharga Rp10.000 lalu mengubahnya jadi benang seharga Rp25.000,
         pabrik itu tidak menciptakan uang Rp25.000 baru. Mereka hanya menambahkan nilai sebesar Rp15.000 ke kapas tersebut.
@@ -402,9 +410,7 @@ elif st.session_state.active_tab == "tab3":
     st.markdown("""
     Diketahui data produksi suatu negara sebagai berikut:
 
-    - Sektor perkebunan memproduksi gandum senilai Rp200 miliar.
-    - Rp150 miliar dijual ke pabrik tepung.
-    - Rp50 miliar langsung dijual ke masyarakat.
+    - Sektor perkebunan memproduksi gandum senilai Rp200 miliar, Rp150 miliar dijual ke pabrik tepung, dan Rp50 miliar langsung dijual ke masyarakat untuk dikonsumsi.
     - Pabrik tepung menghasilkan tepung terigu senilai Rp270 miliar.
     - Tepung dibeli pabrik roti.
     - Pabrik roti menghasilkan roti senilai Rp400 miliar.
@@ -455,11 +461,13 @@ elif st.session_state.active_tab == "tab4":
     Pendekatan Pendapatan, ya. Selamat belajar, ya!
     """)
 
-    st.write("""
-    Sebelum kita menghitung menggunakan pendapatan ini, kita wajib memahami dahulu apa saja komponen yang dihitung dan masuk ke dalam perhitungan.
-    Terdapat empat komponen yang masuk, yaitu Rent (Sewa), Wage (Upah), Interest (Bunga), dan Profit (Laba).
-    Eh, terasa familiar bukan dengan istilah-istilah tersebut? Yap, benar. Empat macam balas jasa dari Rrumah Tangga Produksi kepada Rumah Tangga Konsumen atas faktor produksi dimasukkan semuanya ke perhitungan pendekatan
-    pendapatan ini.
+    st.markdown("""
+    Masih ingat dengan materi Pelaku Ekonomi? Dalam ekonomi terdapat 4 pelaku ekonomi, yaitu: Rumah Tangga Produsen (RTP), Rumah Tangga Konsumen (RTK), Pemerintah, dan Masyarakat Luar Negeri. Masing-masing mempunyai peran yang berbeda. Namun, untuk pendekatan pendapatan ini kita fokus ke RTK saja. RTK berperan sebagai penyedia 4 faktor produksi, yaitu sumber daya alam, sumber daya manusia, modal, dan kewirausahaan. Nah, balas jasa dari empat faktor produksi inilah yang masuk ke dalam komponen perhitungan pendekatan pendapatan.
+    Terdapat empat komponen yang masuk, yaitu:
+    1.	Rent (Sewa) sebagai balas jasa sumber daya alam, 
+    2.	Wage (Upah) sebagai balas jasa sumber daya manusia, 
+    3.	Interest (Bunga) sebagai balas jasa modal, dan,
+    4.	Profit (Laba) sebagai balas jasa kewirausahaan. 
     Yuk, kita bahas lebih detail ya.
     """)
     
@@ -489,10 +497,7 @@ elif st.session_state.active_tab == "tab4":
     st.write("""Profit/Laba adalah pendapatan yang diterima oleh pemilik Faktor Produksi Keahlian / Kewirausahaan (Entrepreneurship). Wirausahawan adalah orang yang menanggung risiko, menggabungkan tanah, tenaga kerja, dan modal agar tercipta proses produksi yang sukses.
     Laba dengan kata lain adalah sisa hasil usaha setelah semua biaya (upah, sewa, bunga) dibayarkan.
     """)
-    st.write("""Di soal-soal, komponen Laba biasanya dipecah atau diubah menjadi Laba ditahan (Keuntungan yang tidak dibagikan, melainkan disimpan perusahaan untuk modal lagi),
-    Dividen (Bagian keuntungan yang dibagikan kepada pemegang saham), dan Pajak Penghasilan Perusahaan (Bagian laba yang disetor ke negara).
-    Jika di soal ketiga komponen di atas muncul terpisah, kita harus menjumlahkan ketiganya terlebih dahulu untuk mendapatkan total nilai Laba.
-    """)
+    
     st.write("Bagaimana, mudah bukan? Jika masih belum dipahami bisa discroll ke atas dan dipahami lagi, ya.")
 
     st.info("Jadi, Rumus menghitung pendekatan pendapatan yaitu Y = r + w + i + p")
@@ -516,7 +521,7 @@ elif st.session_state.active_tab == "tab4":
     - Pajak Keuntungan Perusahaan = Rp30.000
     - Pengeluaran Pemerintah = Rp400.000
     - Ekspor Neto = Rp90.000
-    - Tunjangan Hari Raya (THR) Pegawai = Rp50.000
+    - Keuntungan Wirausaha = Rp50.000
     """)
 
     st.markdown("Berapakah Pendapatan Nasional negara tersebut?")
@@ -536,7 +541,7 @@ elif st.session_state.active_tab == "tab4":
 
     if st.button("Periksa Jawaban", key="btn_pendapatan"):
 
-        if jawaban_pn == "B. Rp840.000 miliar":
+        if jawaban_pn == "E. Rp680.000 miliar":
 
             st.balloons()
 
@@ -548,7 +553,7 @@ elif st.session_state.active_tab == "tab4":
     Y = w + r + i + p
 
     w (upah & gaji):
-    450.000 + 50.000 = 500.000
+    450.000
 
     r (sewa):
     120.000
@@ -557,11 +562,11 @@ elif st.session_state.active_tab == "tab4":
     60.000
 
     p (profit):
-    80.000 + 50.000 + 30.000 = 160.000
+    50.000
 
     Total:
-    500.000 + 120.000 + 60.000 + 160.000
-    = Rp840.000 miliar
+    450.000 + 120.000 + 60.000 + 50.000
+    = Rp680.000 miliar
     """)
 
         else:
@@ -586,7 +591,7 @@ elif st.session_state.active_tab == "tab4":
     dan lupa laba ditahan serta pajak keuntungan.
     """)
 
-            elif jawaban_pn == "E. Rp680.000 miliar":
+            elif jawaban_pn == "B. Rp840.000 miliar":
                 st.warning("""
     Kamu kemungkinan tidak memasukkan komponen profit perusahaan (p).
     """)
@@ -602,19 +607,18 @@ elif st.session_state.active_tab == "tab5":
     Kamu bisa menggunakan menu ini untuk mempelajari lebih dalam tentang perhitungan Pendapatan Nasional
     Pendekatan Pengeluaran. Selamat belajar, ya!
     """)
-
+    st.write("""Di dalam Circular Flow Diagram, kita bisa melihat bagaimana uang dan barang berputar terus-menerus di antara para pelaku ekonomi. Ketika RTK membeli barang dari RTP, terjadi arus uang dari RTK ke RTP. Sebaliknya, ketika RTP membayar upah, sewa, atau total balas jasa kepada RTK atas faktor produksi yang digunakan, uang kembali mengalir dari RTP ke RTK. Konsep perputaran interaktif ini juga berlaku bagi Pemerintah melalui pajak dan subsidi, serta Masyarakat Luar Negeri melalui ekspor-ekspor dan impor.""")
+    st.info("Di sinilah kunci utamanya, arus pengeluaran dari satu pihak selalu sama dengan arus pendapatan bagi pihak lainnya.")
     st.write("""Sebelum kita memulai perhitungan, alangkah baiknya kita mengenal dahulu komponen-komponen apa saja yang masuk ke dalam perhitungan
     pendekatan pengeluaran. Seperti yang kita ketahui, rumus menghitungnya yaitu Y = C + G + I + (X - M).
     Inti dari pendekatan pengeluaran (expenditure approach) sebenarnya adalah menghitung total nilai belanja atau pengeluaran yang dilakukan oleh seluruh
     pelaku ekonomi (RTK, Perusahaan, Pemerintah, dan Masyarakat Luar Negeri) untuk membeli barang dan jasa akhir yang diproduksi di dalam negeri selama satu tahun.
     """)
     st.info("Mengapa ya menghitung pengeluaran bisa menghasilkan angka Pendapatan Nasional?")
-    st.write("""Jadi seperti ini, setiap uang yang kita keluarkan untuk belanja, otomatis akan menjadi pendapatan bagi orang lain yang menjual barang tersebut.
-    Jika kita mendata dan menjumlahkan semua nota belanjaan dari seluruh pelosok negeri, maka total nilai belanjaan itu nilainya akan sama persis
-    dengan total pendapatan yang diterima oleh seluruh masyarakat di negara tersebut.""")
+    st.write("""Jadi seperti ini, jika kita mengacu pada Circular Flow Diagram tadi, setiap uang yang kita keluarkan untuk belanja otomatis akan menjadi pendapatan bagi orang lain yang menjual barang tersebut. Logikanya, jika kita mendata dan menjumlahkan semua nota belanjaan dari seluruh pelosok negeri, maka total nilai belanjaan itu nilainya akan sama persis dengan total pendapatan yang diterima oleh seluruh masyarakat di negara tersebut. Oleh karena itu, besarnya pengeluaran dalam perekonomian secara makro mencerminkan besarnya pendapatan nasional.""")
 
-    st.write("So, Pengeluaran = Pendapatan. Hanya pindah tangan saja, dari pembeli ke penjual.")
-    st.info("Ingat aturan emas: Pendekatan Pengeluaran melihat perekonomian dari sudut pandang konsumen/pembeli")
+    st.write("Jadi, Pengeluaran = Pendapatan.")
+    st.info("Ingat aturan emas: Pendekatan Pengeluaran menghitung pendapatan dari semua pengeluaran para pelaku ekonomi empat sektor.")
     st.divider()
     st.subheader("Yuk, kita pahami dulu semua komponennya!")
     st.write("1. Konsumsi (Consumption) = C")
@@ -624,7 +628,6 @@ elif st.session_state.active_tab == "tab5":
              - Barang Tidak Tahan Lama (Nondurable Goods), yaitu barang yang langsung habis atau memiliki masa pakai pendek. Contohnya: Makanan, bensin, sabun, baju.
              - Biaya Jasa (Services) yaitu pembayaran atas layanan. Contohnya: Biaya potong rambut, tiket bioskop, paket data internet, jasa ojek online.
     """)
-    st.info("Eits, pembelian Rumah Tinggal Baru oleh perorangan TIDAK masuk ke komponen C ya, melainkan dimasukkan ke komponen Investasi (I) karena properti dianggap sebagai aset produktif jangka panjang. Selain itu, laptop yang dibeli perusahaan untuk operasional karyawannya juga termasuk ke dalam Investment (I).")
     
     st.write("2. Investasi (Investment) = I")
     st.write("""Dalam makroekonomi, Investasi (I) bukanlah uang yang ditanam di saham atau kripto. Investasi di sini adalah pengeluaran untuk membeli barang modal fisik yang digunakan untuk menghasilkan barang/jasa lain di masa depan.
@@ -634,7 +637,7 @@ elif st.session_state.active_tab == "tab5":
              - Investasi fisik contohnya membangun pabrik baru, mendirikan gedung kantor, atau membeli ruko.
              - Membeli peralatan modal seperti mesin cetak, truk angkutan barang, komputer untuk operasional karyawan.
              - Stok persediaan barang yang sudah diproduksi tahun ini tapi belum laku dijual dan masih tersimpan di gudang tetap dihitung sebagai pengeluaran perusahaan "membeli" produknya sendiri agar tetap tercatat di PDB tahun berjalan.
-             - Rumah tinggal baru yang dibeli perorangan.
+             - Rumah tinggal baru yang dibeli perorangan untuk dijadikan tempat usaha yang dapat menghasilkan barang atau jasa, misalkan: dikontrakkan untuk dijadikan gudang dan dijadikan usaha kos-kosan.
     """)
     st.info("Eits, Investasi Keuangan seperti membeli saham, obligasi, atau reksa dana SAMA SEKALI TIDAK DIHITUNG karena hanya berupa perpindahan kepemilikan kertas/aset, dan tidak menciptakan barang fisik baru di dalam perekonomian. Komponen yang dicatat murni berupa investasi fisik, seperti membangun pabrik, membeli mesin, atau menambah stok persediaan barang.")
     
@@ -643,7 +646,7 @@ elif st.session_state.active_tab == "tab5":
     Komponen G hanya menghitung pengeluaran pemerintah yang bersifat produktif (ada barang atau jasa yang diterima negara sebagai timbal balik), seperti membayar gaji PNS, membangun jalan tol, atau membeli alutsista.
     """)
     
-    st.info("Eits, pengeluaran pemerintah yang sifatnya sepihak seperti Bantuan Langsung Tunai (BLT), subsidi BBM, atau beasiswa pendidikan disebut Transfer Payment (pembayaran pindahan) dan TIDAK boleh dimasukkan ke dalam rumus pendapatan nasional karena tidak menghasilkan barang/jasa baru saat itu juga.")
+    st.info("Eits, pengeluaran pemerintah yang sifatnya sepihak seperti Bantuan Langsung Tunai (BLT), subsidi BBM, atau beasiswa pendidikan disebut Transfer Payment (pembayaran pindahan) dan TIDAK boleh dimasukkan ke dalam rumus GDP karena tidak menghasilkan barang/jasa baru saat itu juga, tetapi transfer payment baru boleh dimasukkan pada perhitungan Personal Income (PI).")
     
     st.write("4. Ekspor (Exports) = X")
     st.write("""Ekspor menghitung pengeluaran yang dilakukan oleh orang, perusahaan, atau pemerintah luar negeri untuk membeli barang dan jasa yang diproduksi di dalam negeri kita.
@@ -685,7 +688,8 @@ elif st.session_state.active_tab == "tab5":
             "A. Rp840 triliun",
             "B. Rp780 triliun",
             "C. Rp740 triliun",
-            "D. Rp700 triliun"
+            "D. Rp700 triliun",
+            "E. Rp670 triliun"
         ),
         index=None,
         key="soal_pengeluaran"
@@ -735,7 +739,11 @@ elif st.session_state.active_tab == "tab5":
             elif jawaban_pengeluaran == "C. Rp740 triliun":
                 st.warning("""Kamu kemungkinan memasukkan bansos pemerintah sebagai komponen G, padahal bansos termasuk transfer payment.
     """)
-    
+
+            elif jawaban_pengeluaran == "E. Rp670 triliun":
+                st.warning("""Kamu mungkin salah menghitung komponen-komponen pendekatan pengeluaran.
+    """)
+
     if st.button("Kembali ke Menu Utama"):
         st.session_state.active_tab = "tab0"
 
@@ -745,33 +753,50 @@ elif st.session_state.active_tab == "tab6":
         st.title("Pendapatan Perkapita")
     
     st.header("Konsep Pendapatan Perkapita")
-    st.subheader("1. Hakikat Pendapatan Perkapita")
+    st.subheader("1. Definisi Pendapatan Perkapita")
     st.markdown("""Secara harfiah, per capita berasal dari bahasa Latin yang berarti "per kepala". 
     Jadi, Pendapatan Perkapita adalah ukuran rata-rata pendapatan yang diperoleh oleh setiap penduduk di suatu negara dalam kurun waktu satu tahun.""")
     
     st.info("""Pendapatan perkapita digunakan oleh lembaga internasional seperti Bank Dunia sebagai indikator utama untuk mengukur tingkat kemakmuran suatu negara dan mengelompokkan negara tersebut
     apakah masuk kategori Low, Lower-Middle, Upper-Middle, atau High Income.
     """)
-
+    st.image('gnp.png')
+    st.image('worldbank.png')
+    st.write("Wilayah hijau tua, yaitu Amerika Utara, Eropa, dan Australia adalah kelompok negara dengan kategori High Income, disusul hijau muda yang menunjukkan kategori Upper-Middle seperti Tiongkok dan Rusia yang ekonominya sudah cukup maju. Sementara itu, merah muda yang menunjukkan kategori Lower-Middle menunjukkan negara berkembang termasuk Indonesia dan India. Ungu tua yang menunjukkan kategori Low Income menandakan negara-negara berpendapatan rendah yang mayoritas berada di Afrika. Pengelompokan ini tidak permanen, ya, bisa berubah setiap tahunnya, tentunya dengan hal ini memberikan kesempatan bagi negara berkembang seperti kita untuk terus naik kelas ke zona hijau tua.")
     st.divider()
-    st.subheader("2. Rumus dan Komponen Penting")
-    st.image('rumuspp1.jpg')
+
+    st.subheader("2. Perhitungan Pendapatan Perkapita")
+    st.image('rmspp.png')
     st.write("""Rumus perhitungannya memang terlihat sederhana, namun kita sering bingung yang dimasukkan nilai PDB atau nilai PNB, ya?
     Ingat, PDB/GDP adalah rata-rata output yang dihasilkan di dalam wilayah domestik suatu negara, tanpa memedulikan apakah itu milik warga lokal atau perusahaan asing.
     Sedangkan, PNB/GNP adalah rata-rata pendapatan yang benar-benar dimiliki oleh Warga Negara tersebut (baik yang tinggal di dalam negeri maupun di luar negeri).
     Pada pendapatan perkapita yang kita hitung adalah tingkat kesejahteraan warga negara kita yang sebenarnya, sehinga perhitungan menggunakan PNB/GNP jauh lebih akurat daripada PDB/GDP.
     """)
     st.divider()
-    st.subheader("3. GDP Deflator dan Riil")
-    st.write("""Sebelum melangkah lebih jauh, kita harus memahami apa itu GDP Deflator dan Riil.
+    st.divider()
+
+    st.subheader("GDP Nominal dan Riil")
+    st.write("""Sebelum melangkah lebih jauh, kita harus memahami apa itu GDP Nominal dan Riil.
     """)
-    st.write("A. GDP Deflator")
-    st.write("""
-    GDP Deflator adalah rasio atau perbandingan antara apa yang diproduksi saat ini menggunakan harga saat ini (Nominal) dengan apa yang diproduksi saat ini menggunakan harga tahun dasar (Riil).
-    Fungsi GDP Deflator adalah untuk menyaring data kotor. Misalnya pemerintah punya data kotor yang masih terkena inflasi, yang disebut GDP Nominal. Pemerintah ingin mengubahnya menjadi data bersih, yaitu GDP Riil. Alat saringnya dinamakan GDP Deflator.
-    Rumus GDP Deflator, yaitu:
+    st.write("A. GDP Nominal")
+    st.markdown("""
+    GDP nominal adalah nilai pendapatan rata-rata penduduk yang dihitung menggunakan harga barang dan jasa yang sedang berlaku pada tahun berjalan. Jika kita ingin menghitung pendapatan perkapita tahun 2026, maka seluruh output ekonomi negara di tahun 2026 akan dikalikan dengan harga pasar di tahun 2026 pula, lalu dibagi dengan jumlah penduduk pada tahun tersebut.
+•	- Angka ini mencerminkan kondisi nilai mata uang secara aktual pada tahun tersebut.
+    - Angka nominal ini dapat bersifat menipu. Jika pendapatan perkapita nominal suatu negara melonjak dari tahun lalu, hal itu belum tentu menandakan bahwa masyarakatnya menjadi lebih makmur. Peningkatan tersebut bisa saja terjadi bukan karena jumlah produksi barang bertambah, melainkan karena harga-harga barang di pasar sedang mengalami kenaikan yang masif (Inflasi).
     """)
-    st.image('deflator.png')
+    st.write("B. GDP Riil")
+    st.markdown("""GDP Riil adalah nilai pendapatan rata-rata penduduk yang dihitung menggunakan patokan harga pada tahun dasar tertentu yang dinilai stabil (misalnya, menggunakan patokan harga tahun 2010 atau tahun acuan lainnya). Jadi, meskipun kita menghitung pendapatan perkapita untuk tahun 2024, 2025, atau 2026, harga barang yang digunakan sebagai komponen pengali tetap dikunci pada harga tahun dasar.
+•	- Angka ini sudah dibersihkan atau dieliminasi dari dampak inflasi.
+•	- Pendapatan perkapita riil inilah yang menjadi indikator akurat untuk mengukur kemakmuran yang sesungguhnya. Jika pendapatan perkapita harga konstan suatu negara meningkat, dapat dipastikan bahwa volume produksi barang dan jasa di negara tersebut memang benar-benar bertambah secara fisik, yang berarti daya beli riil masyarakatnya mengalami perbaikan.
+    """)
+    st.write("Rumus menghitung GDP Riil:")
+    st.image('rmsriil.png')
+
+    st.write("C. GDP Deflator")
+    st.markdown("""GDP Deflator adalah rasio atau perbandingan antara apa yang diproduksi saat ini 
+    menggunakan harga saat ini (Nominal) dengan apa yang diproduksi saat ini menggunakan harga tahun dasar (Riil). Fungsi GDP Deflator adalah untuk menyaring data kotor. Misalnya pemerintah punya data kotor yang masih terkena inflasi, yang disebut GDP Nominal. Pemerintah ingin mengubahnya menjadi data bersih, yaitu GDP Riil. Alat saringnya dinamakan GDP Deflator. Rumus GDP Deflator, yaitu:
+    """)
+    st.image('rmsdeflator.png')
     st.info("""
     Patokan angka dari GDP Deflator pada tahun dasar adalah 100. Jadi, hasil akhir dari rumus di atas akan menunjukkan seberapa besar inflasi yang terjadi.
     Jika hasilnya 100 artinya tidak ada perubahan harga atau tidak ada inflasi yang terjadi dibanding tahun dasar. Jika hasilnya 125 artinya telah terjadi kenaikan harga atau inflasi sebesar 25% (125-100) sejak tahun dasar.
@@ -788,67 +813,6 @@ elif st.session_state.active_tab == "tab6":
     - GDP Deflator = 110
     """)
     st.write("Mudah dipahami bukan?")
-
-    st.write("B. GDP Riil")
-    st.write("GDP Riil adalah data ekonomi yang sudah bersih karena efek inflasi sudah disaring menggunakan GDP Deflator tadi. Rumusnya, yaitu:")
-    st.image('gdpriil.png')
-    st.write("Coba kita cek soal di bawah ini:")
-    st.markdown("""
-    Pada tahun 2025, Negara Fufufafa mencatat data makroekonomi sebagai berikut:
-    - Gross Domestic Product (GDP) Nominal = Rp120.000.000
-    - Indeks Harga (GDP Deflator) = 120
-    Berdasarkan data tersebut, hitunglah besarnya GDP Riil Negara Fufufafa!
-    """)
-    st.markdown("""
-    Penyelesaian:
-    - GDP Riil = Rp120.000.000/120 x 100
-    - GDP Riil = Rp1.000.000 x 100
-    - GDP Riil = Rp10.000.000
-    Nilai GDP Riil negara Fufufafa sebesar Rp10.000.000
-    """)
-    st.divider()
-    st.subheader("4. Jenis Pendapatan Perkapita")
-    st.write("Terdapat dua jenis pendapatan perkapita, antara lain:")
-    st.write("1. Pendapatan Perkapita Atas Dasar Harga Berlaku (Nominal).")
-    st.markdown("""Pendapatan perkapita atas dasar harga berlaku adalah nilai pendapatan rata-rata penduduk yang dihitung menggunakan harga barang dan jasa yang sedang berlaku pada tahun berjalan.
-    Jika kita ingin menghitung pendapatan perkapita tahun 2026, maka seluruh output ekonomi negara di tahun 2026 akan dikalikan dengan harga pasar di tahun 2026 pula, lalu dibagi dengan jumlah penduduk pada tahun tersebut.""")
-    st.markdown("""
-    - Angka ini mencerminkan kondisi nilai mata uang secara aktual pada tahun tersebut.
-    - Angka nominal ini dapat bersifat menipu. Jika pendapatan perkapita nominal suatu negara melonjak dari tahun lalu, hal itu belum tentu menandakan bahwa masyarakatnya menjadi lebih makmur. Peningkatan tersebut bisa saja terjadi bukan
-    karena jumlah produksi barang bertambah, melainkan karena harga-harga barang di pasar sedang mengalami kenaikan yang masif (Inflasi).
-    """)
-    st.write("Rumus menghitung pendapatan perkapita nominal")
-    st.image('rumusppnom.png')
-
-    st.write("2. Pendapatan Perkapita Atas Dasar Harga Konstan (Riil)")
-    st.write("""Pendapatan perkapita atas dasar harga konstan adalah nilai pendapatan rata-rata penduduk yang dihitung
-    menggunakan patokan harga pada tahun dasar tertentu yang dinilai stabil (misalnya, menggunakan patokan harga tahun 2010 atau tahun acuan lainnya).
-    Jadi, meskipun kita menghitung pendapatan perkapita untuk tahun 2024, 2025, atau 2026, harga barang yang digunakan sebagai komponen pengali tetap dikunci pada harga tahun dasar.
-    """)
-    st.markdown("""
-    - Angka ini sudah dibersihkan atau dieliminasi dari dampak inflasi.
-    - Pendapatan perkapita riil inilah yang menjadi indikator akurat untuk mengukur kemakmuran yang sesungguhnya. Jika pendapatan perkapita harga konstan suatu negara meningkat,
-    dapat dipastikan bahwa volume produksi barang dan jasa di negara tersebut memang benar-benar bertambah secara fisik, yang berarti daya beli riil masyarakatnya mengalami perbaikan.
-    """)
-    st.write("Rumus menghitung pendapatan perkapita riil: ")
-    st.image('rumusppriil.png')
-    st.write("Supaya semakin paham, perhatikan contoh soal berikut:")
-    st.markdown("""
-    Misalkan di sebuah negara kecil bernama Midgard, datanya seperti ini:
-    - GDP Nominal = Rp1.200.000
-    - GDP Deflator = 120
-    - Jumlah Penduduk = 10 orang.
-    Berdasarkan data di atas, hitunglah pendapatan perkapita nominal dan riil-nya!
-    """)
-    st.write("Cara menghitungnya jangan langsung dibagi dengan jumlah penduduk, melainkan kita saring dulu dengan alat GDP Deflator menggunakan rumus GDP Riil.")
-    st.write("""
-    GDP Riil = Rp1.200.000/120 x 100 = Rp1.000.000. Jadi, GDP Riil-nya sebesar Rp1.000.000, nilai ini sudah bebas dari inflasi.
-    """)
-    st.write("Kita sudah mempunyai satu data tambahan nih, yaitu GDP Riil = Rp1.000.000. Selanjutnya tingga kita masukkan seja ke rumus pendapatan perkapita nominal dan riil.")
-    st.write("a. Pendapatan perkapita nominal")
-    st.write("Pendapatan perkapita nominal = Rp1.200.000/10 = Rp120.000/orang")
-    st.write("b. Pendapatan perkapita riil")
-    st.write("Pendapatan perkapita riil = Rp1.000.000/10 = Rp100.000/orang")
     st.warning("Psst, kalau masih ada kesulitan bisa dibaca dan dipahami kembali, ya.")
     st.divider()
     st.write("Berikut ringkasan perbandingan pendapataan perkapita nominal dan riil:")
@@ -943,7 +907,7 @@ elif st.session_state.active_tab == "tab7":
     Nilainya diturunkan langsung dari Kurva Lorenz.
     """)
     st.write("Rumus menghitung koefisien gini:")
-    st.image('rumusgini.png')
+    st.image('rmsgini.png')
     st.markdown("""
     Jika kita melihat grafik Kurva Lorenz di atas, kita misalkan saja...
     - Area A adalah daerah yang berada di antara Garis Kemerataan Sempurna dan Kurva Lorenz.
