@@ -1023,46 +1023,33 @@ elif st.session_state.active_tab == "tab8":
         ],
         "answer": "B. Wage (Upah/Gaji) dan Profit (Laba Usaha)",
         "explanation": "Dalam pendekatan pendapatan, Y = r + w + i + p, di mana r = rent, w = wage, i = interest, dan p = profit."
-    },
-
-    {
-        "id": "C106",
-        "question": "Ukuran rata-rata pendapatan yang diperoleh oleh setiap penduduk di suatu negara dalam kurun waktu satu tahun disebut...",
-        "options": [
-            "A. Produk Domestik Bruto regional",
-            "B. Pendapatan Perkapita",
-            "C. Koefisien Gini Nasional",
-            "D. Nilai Tambah Bruto",
-            "E. Kurva Kesetaraan Ekonomi"
-        ],
-        "answer": "B. Pendapatan Perkapita",
-        "explanation": "Pendapatan per kapita diperoleh dari pembagian pendapatan nasional dengan jumlah penduduk."
     }
     ],
 
     "C2": [
         {
             "id": "C201",
-            "question": "Suatu negara mengalami peningkatan kualitas pendidikan dan keterampilan tenaga kerja. Dampak yang paling mungkin terjadi terhadap pendapatan nasional adalah ... ",
+            "question": "Salah satu faktor internal yang sangat menentukan kapasitas produksi nasional suatu negara adalah kualitas sumber daya manusianya. Di bawah ini, indikator kualitas SDM yang secara langsung mendorong peningkatan pendapatan nasional melalui efisiensi input adalah…",
             "options": [
-                "A. Pendapatan nasional menurun karena biaya pendidikan meningkat",
-                "B. Pendapatan nasional tetap karena pendidikan tidak berhubungan dengan produksi",
-                "C. Pendapatan nasional meningkat karena produktivitas tenaga kerja bertambah",
-                "D. Pendapatan nasional menurun karena jumlah penduduk berkurang",
-                "E. Pendapatan nasional hanya memengaruhi sektor jasa"
+                "A. Peningkatan jumlah angkatan kerja yang memasuki usia produktif setiap tahunnya.",
+                "B. Pertumbuhan tingkat partisipasi angkatan kerja di sektor informal perkotaan.",
+                "C. Tingginya angka harapan hidup yang memperpanjang masa pensiun tenaga kerja.",
+                "D. Peningkatan penguasaan teknologi modern dan spesialisasi keahlian.",
+                "E. Keberhasilan program transmigrasi dalam meratakan persebaran tenaga kerja di daerah terpencil."
+
             ],
-            "answer": "C. Pendapatan nasional meningkat karena produktivitas tenaga kerja bertambah",
-            "explanation": "Kualitas sumber daya manusia yang lebih baik akan meningkatkan produktivitas tenaga kerja sehingga jumlah barang dan jasa yang dihasilkan bertambah. Akibatnya, pendapatan nasional cenderung meningkat."
+            "answer": "D. Peningkatan penguasaan teknologi modern dan spesialisasi keahlian.",
+            "explanation": "Karena kualitas SDM berupa keahlian dan penguasaan teknologi secara langsung meningkatkan produktivitas per kapita yang mendorong pendapatan nasional."
 
         },
         {
             "id": "C202",
             "question": "Konsep Gross Domestic Product (GDP) menganut asas teritorial (wilayah). Arti dari asas teritorial tersebut adalah... ",
             "options": [
-                "A. Hanya menghitung pendapatan warga negara lokal saja",
+                "A. Hanya menghitung pendapatan warga negara Indonesia saja",
                 "B. Faktor produksi milik siapapun (WNI maupun WNA) yang beroperasi di dalam negeri, nilainya mutlak dihitung",
                 "C. Hanya menghitung pendapatan yang berasal dari luar negeri",
-                "D. Menghitung pendapatan warga lokal yang berada di luar negeri saja",
+                "D. Menghitung pendapatan WNI yang berada di luar negeri saja",
                 "E. Menghapus semua pajak dari wilayah domestik",
 
             ],
@@ -1072,31 +1059,31 @@ elif st.session_state.active_tab == "tab8":
         },
         {
             "id": "C203",
-            "question": "Konsep Gross National Product (GNP) menganut asas nasionalitas atau kewarganegaraan. Berdasarkan asas ini, untuk mendapatkan nilai GNP maka... ",
+            "question": "Mr. John, seorang warga negara Amerika Serikat, bekerja sebagai tenaga ahli asing di sebuah perusahaan multinasional yang beroperasi di Jakarta. Dalam konsep pendapatan nasional, pendapatan yang diterima oleh Mr. John selama bekerja di Jakarta akan dihitung ke dalam...",
             "options": [
-                "A. GDP harus dikurangi penyusutan mesin pabrik",
-                "B. GDP disesuaikan dengan Pendapatan Neto terhadap Luar Negeri",
-                "C. GDP langsung dikurangi pajak langsung",
-                "D. GDP ditambah dengan nilai laba ditahan",
-                "E. GDP dibagi dengan jumlah penduduk"
+                "A. GDP Indonesia dan GNP Amerika Serikat.",
+                "B. GNP Indonesia dan GDP Amerika Serikat.",
+                "C. GDP Indonesia dan GDP Amerika Serikat.",
+                "D. GNP Indonesia dan GNP Amerika Serikat.",
+                "E. Hanya dihitung dalam GDP Indonesia saja dan diabaikan oleh Amerika Serikat."
 
             ],
-            "answer": "B. GDP disesuaikan dengan Pendapatan Neto terhadap Luar Negeri",
-            "explanation": "Gross National Product (GNP) atau Produk Nasional Bruto (PNB) menitikberatkan pada aspek nasionalitas/kewarganegaraan."
+            "answer": "A. GDP Indonesia dan GNP Amerika Serikat.",
+            "explanation": "Karena Mr. John bekerja di wilayah Indonesia (masuk GDP Indonesia berdasarkan asas teritorial) tetapi dia adalah warga negara Amerika Serikat (masuk GNP Amerika Serikat berdasarkan asas nasionalitas)."
         },
         {
             "id": "C204",
-            "question":"Dalam menghitung Net National Income (NNI), mengapa Pajak Tidak Langsung harus dikurangkan dan Subsidi harus ditambahkan ke nilai NNP? ",
+            "question":"Dalam perhitungan pendapatan nasional, Net National Income (NNI) atau Pendapatan Nasional Bersih diperoleh dengan cara mengurangkan pajak tidak langsung dari Net National Product (NNP). Alasan mengapa pajak tidak langsung harus dikurangkan dalam menghitung NNI adalah...",
             "options":[
-                "A. Karena subsidi bersifat merugikan kas perusahaan",
-                "B. Pajak tidak langsung adalah titipan pemerintah yang menempel pada produk (bukan omset murni), sedangkan subsidi meringankan modal riil hasil usaha",
-                "C. Karena pajak tidak langsung selalu dibayarkan oleh wajib pajak sendiri dan tidak bisa dialihkan",
-                "D. Agar nilai NNI sama persis dengan nilai inflasi pasar",
-                "E. Karena subsidi merupakan bentuk tabungan jangka panjang masyarakat",
+                "A. Pajak tidak langsung merupakan bentuk balas jasa atas faktor produksi yang disediakan oleh pemerintah kepada perusahaan.",
+                "B. Nilai pajak tidak langsung melekat pada harga pasar barang, tetapi bukan merupakan balas jasa yang diterima oleh pemilik faktor produksi.",
+                "C. Pajak tidak langsung secara langsung mengurangi pendapatan disposabel yang siap dibelanjakan oleh rumah tangga konsumen.",
+                "D. Komponen pajak tidak langsung selalu dialokasikan kembali oleh pemerintah dalam bentuk subsidi bahan bakar baku.",
+                "E. Pajak tidak langsung mencerminkan nilai penyusutan atas barang-barang modal yang digunakan selama proses produksi."
 
             ],
-            "answer": "B. Pajak tidak langsung adalah titipan pemerintah yang menempel pada produk (bukan omset murni), sedangkan subsidi meringankan modal riil hasil usaha",
-            "explanation":"Pengurangan pajak tidak langsung dan penambahan subsidi dilakukan agar nilai NNI mencerminkan pendapatan bersih yang benar-benar diterima oleh pemilik faktor produksi dalam suatu perekonomian."
+            "answer": "B. Nilai pajak tidak langsung melekat pada harga pasar barang, tetapi bukan merupakan balas jasa yang diterima oleh pemilik faktor produksi.",
+            "explanation":"NNI menghitung pendapatan berdasarkan biaya faktor produksi. Pajak tidak langsung contohnya seperti PPN, membuat harga pasar barang menjadi lebih mahal, tetapi uang pajak tersebut diserahkan ke kas negara, bukan diterima oleh pemilik faktor produksi (tenaga kerja, modal, tanah). Oleh karena itu, nilainya harus dikurangkan agar mencerminkan pendapatan faktor yang sebenarnya."
         },
         {
             "id": "C205",
@@ -1168,16 +1155,17 @@ elif st.session_state.active_tab == "tab8":
         },
         {
             "id": "C209",
-            "question":"GDP Nominal suatu negara pada tahun tertentu tercatat lebih tinggi daripada GDP Riil. Untuk mengetahui pengaruh perubahan tingkat harga terhadap nilai produksi tersebut, pemerintah menggunakan GDP Deflator yang diperoleh dari ...",
+            "question":"Hubungan antara PDB Nominal, PDB Riil, dan GDP Deflator sangat erat dalam menentukan nilai riil perekonomian. Jika nilai GDP Deflator suatu negara pada tahun 2026 adalah sebesar 140, maka kesimpulan yang paling tepat di bawah ini adalah...",
             "options": [
-                "A. Perbandingan GDP Riil dengan jumlah penduduk",
-                "B. Selisih antara GDP Nominal dan GDP Riil",
-                "C. Perbandingan GDP Nominal terhadap GDP Riil yang dikalikan 100",
-                "D. Penjumlahan GDP Nominal dan GDP Riil",
-                "E. Perbandingan GDP Riil terhadap GDP Nominal yang dikalikan 100"
+                "A. Produksi fisik barang dan jasa di negara tersebut telah meningkat sebesar 40% dari tahun dasar.",
+                "B. Nilai PDB Riil negara tersebut dipastikan lebih besar daripada nilai PDB Nominalnya.",
+                "C. Tingkat harga umum pada tahun 2026 telah mengalami kenaikan sebesar 40% dibandingkan dengan tingkat harga pada tahun dasar.",
+                "D. Jumlah uang yang beredar di masyarakat mengalami penurunan drastis sebesar 40%.",
+                "E. Perekonomian negara tersebut mengalami deflasi sebesar 40% akibat penurunan daya beli masyarakat."
+
             ],
-            "answer":"C. Perbandingan GDP Nominal terhadap GDP Riil yang dikalikan 100",
-            "explanation":"GDP Deflator digunakan untuk mengukur perubahan tingkat harga dalam perekonomian. Nilainya diperoleh dengan membandingkan GDP Nominal terhadap GDP Riil kemudian dikalikan 100."
+            "answer":"C. Tingkat harga umum pada tahun 2026 telah mengalami kenaikan sebesar 40% dibandingkan dengan tingkat harga pada tahun dasar.",
+            "explanation":"nilai indeks 140 berarti ada kenaikan tingkat harga sebesar 140 - 100 = 40% dari tahun dasar, di mana tahun dasar selalu bernilai 100."
         }
         
     ],
@@ -1207,21 +1195,24 @@ elif st.session_state.active_tab == "tab8":
                 "E. Rp445.000 miliar"
 
             ],
-            "answer": "D. Rp452.000 miliar",
+            "answer": "E. Rp445.000 miliar",
             "explanation":"""Penyelesaian:
                 •	GNP = GDP + Pendapatan WNI di Luar Negeri - Pendapatan WNA di dalam negeri.
                 •	GNP = Rp500.000 + Rp30.000 - Rp45.000
                 •	GNP = Rp485.000
+
                 •	NNP = GNP - Penyusutan
                 •	NNP = Rp485.000 - Rp15.000
                 •	NNP = Rp470.000
+
                 •	NNI = NNP - Pajak Tidak Langsung + Subsidi
-                •	NNI = Rp470.000 - Rp22.000 + Rp7.000
-                •	NNI = Rp455.000
-                •	PI = (NNI + Transfer Payment)- (Laba ditahan + Iuran asuransi + pajak perseroan)
-                •	PI = (Rp455.000 + Rp12.000)- (Rp8.000 + Rp4.000 + Rp3.000)
-                •	PI = Rp467.000 - Rp15.000
-                •	PI = Rp452.000
+                •	NNI = Rp470.000 - Rp22.000
+                •	NNI = Rp448.000
+
+                •	PI = (NNI + Transfer Payment) - (Laba ditahan + Iuran asuransi + pajak perseroan)
+                •	PI = (Rp448.000 + Rp12.000) - (Rp8.000 + Rp4.000 + Rp3.000)
+                •	PI = Rp460.000 - Rp15.000
+                •	PI = Rp445.000
                 """
         },
         {
@@ -1250,6 +1241,23 @@ elif st.session_state.active_tab == "tab8":
         ],
         "answer": "C. Rp790.000",
         "explanation": "Y = r + w + i + p = 120.000 + 450.000 + 60.000 + 160.000 = Rp790.000."
+    },
+    {
+        "id": "C304",
+        "question": """Pada tahun 2025, Negara Proxima Centaurus memiliki nilai Gross National Product (GNP) sebesar Rp4.500 triliun. Jumlah total penduduk negara tersebut adalah 150 juta jiwa. Namun, dari total penduduk tersebut, 
+        hanya 90 juta jiwa yang masuk ke dalam kategori angkatan kerja aktif, dan 10 juta jiwa di antaranya masih berstatus pengangguran terbuka.
+        Berdasarkan data ekonomi tersebut, besarnya pendapatan per kapita Negara Proxima Centaurus adalah...
+        """,
+        "options": [
+            "A. Rp50.000.000,00",
+            "B. Rp30.000.000,00",
+            "C. Rp56.250.000,00",
+            "D. Rp45.000.000,00",
+            "E. Rp37.500.000,00"
+
+        ],
+        "answer": "B. Rp30.000.000,00",
+        "explanation": "Pendapatan per kapita = GNP / Total Penduduk = Rp4.500 triliun / 150 juta jiwa = Rp30.000.000,00."
     }
 
     ],
