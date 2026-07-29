@@ -998,20 +998,6 @@ elif st.session_state.active_tab == "tab8":
             "explanation": "Transfer Payment (tunjangan sosial, beasiswa, pensiunan) bersifat menambah (plus) karena merupakan aliran uang dari pemerintah langsung ke masyarakat tanpa masyarakat harus bekerja/menyerahkan faktor produksi pada tahun tersebut."
         },
         {
-            "id": "C104",
-            "question": "Pendapatan pribadi yang sudah bersih dari segala kewajiban hukum terhadap negara dan sepenuhnya siap digunakan untuk konsumsi atau tabungan disebut... ",
-            "options": [
-                "A. Gross Domestic Product", 
-                "B. Net National Product",
-                "C. Personal Income",
-                "D. Disposable Income", 
-                "E. Net National Income"
-
-            ],
-            "answer": "D. Disposable Income",
-            "explanation": "Disposable Income (DI) atau Pendapatan yang Siap Dibelanjakan adalah sisa pendapatan pribadi yang telah dikurangi dengan Pajak Langsung (seperti Pajak Penghasilan/PPh). Pendapatan inilah yang sudah 100% bersih dan siap digunakan secara bebas oleh pemiliknya, baik untuk keperluan konsumsi (C) maupun untuk ditabung (S)."
-        },
-        {
         "id": "C105",
         "question": "Rumus matematika untuk menghitung pendapatan nasional dengan pendekatan pendapatan adalah Y = r + w + i + p. Komponen huruf w dan p dalam rumus tersebut melambangkan...",
         "options": [
@@ -1070,20 +1056,6 @@ elif st.session_state.active_tab == "tab8":
             ],
             "answer": "A. GDP Indonesia dan GNP Amerika Serikat.",
             "explanation": "Karena Mr. John bekerja di wilayah Indonesia (masuk GDP Indonesia berdasarkan asas teritorial) tetapi dia adalah warga negara Amerika Serikat (masuk GNP Amerika Serikat berdasarkan asas nasionalitas)."
-        },
-        {
-            "id": "C204",
-            "question":"Dalam perhitungan pendapatan nasional, Net National Income (NNI) atau Pendapatan Nasional Bersih diperoleh dengan cara mengurangkan pajak tidak langsung dari Net National Product (NNP). Alasan mengapa pajak tidak langsung harus dikurangkan dalam menghitung NNI adalah...",
-            "options":[
-                "A. Pajak tidak langsung merupakan bentuk balas jasa atas faktor produksi yang disediakan oleh pemerintah kepada perusahaan.",
-                "B. Nilai pajak tidak langsung melekat pada harga pasar barang, tetapi bukan merupakan balas jasa yang diterima oleh pemilik faktor produksi.",
-                "C. Pajak tidak langsung secara langsung mengurangi pendapatan disposabel yang siap dibelanjakan oleh rumah tangga konsumen.",
-                "D. Komponen pajak tidak langsung selalu dialokasikan kembali oleh pemerintah dalam bentuk subsidi bahan bakar baku.",
-                "E. Pajak tidak langsung mencerminkan nilai penyusutan atas barang-barang modal yang digunakan selama proses produksi."
-
-            ],
-            "answer": "B. Nilai pajak tidak langsung melekat pada harga pasar barang, tetapi bukan merupakan balas jasa yang diterima oleh pemilik faktor produksi.",
-            "explanation":"NNI menghitung pendapatan berdasarkan biaya faktor produksi. Pajak tidak langsung contohnya seperti PPN, membuat harga pasar barang menjadi lebih mahal, tetapi uang pajak tersebut diserahkan ke kas negara, bukan diterima oleh pemilik faktor produksi (tenaga kerja, modal, tanah). Oleh karena itu, nilainya harus dikurangkan agar mencerminkan pendapatan faktor yang sebenarnya."
         },
         {
             "id": "C205",
@@ -1153,20 +1125,6 @@ elif st.session_state.active_tab == "tab8":
             "answer": "B. Menghitung total nilai belanja atau pengeluaran yang dilakukan oleh seluruh pelaku ekonomi dalam satu tahun",
             "explanation": "Pendekatan pengeluaran menghitung seluruh pengeluaran dari rumah tangga, perusahaan, pemerintah, dan sektor luar negeri."
         },
-        {
-            "id": "C209",
-            "question":"Hubungan antara PDB Nominal, PDB Riil, dan GDP Deflator sangat erat dalam menentukan nilai riil perekonomian. Jika nilai GDP Deflator suatu negara pada tahun 2026 adalah sebesar 140, maka kesimpulan yang paling tepat di bawah ini adalah...",
-            "options": [
-                "A. Produksi fisik barang dan jasa di negara tersebut telah meningkat sebesar 40% dari tahun dasar.",
-                "B. Nilai PDB Riil negara tersebut dipastikan lebih besar daripada nilai PDB Nominalnya.",
-                "C. Tingkat harga umum pada tahun 2026 telah mengalami kenaikan sebesar 40% dibandingkan dengan tingkat harga pada tahun dasar.",
-                "D. Jumlah uang yang beredar di masyarakat mengalami penurunan drastis sebesar 40%.",
-                "E. Perekonomian negara tersebut mengalami deflasi sebesar 40% akibat penurunan daya beli masyarakat."
-
-            ],
-            "answer":"C. Tingkat harga umum pada tahun 2026 telah mengalami kenaikan sebesar 40% dibandingkan dengan tingkat harga pada tahun dasar.",
-            "explanation":"nilai indeks 140 berarti ada kenaikan tingkat harga sebesar 140 - 100 = 40% dari tahun dasar, di mana tahun dasar selalu bernilai 100."
-        }
         
     ],
 
